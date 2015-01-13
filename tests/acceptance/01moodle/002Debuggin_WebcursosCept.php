@@ -6,7 +6,7 @@ $I->click('Entrar', 'div.logininfo');
 $I->fillField('username', 'admin');
 $I->fillField('password', 'pepito.P0');
 $I->click('loginbtn');
-$I->see('Usted se ha identificado como', 'div.logininfo');
+$I->see('Usted se ha identificado como ','div.logininfo');
 $I->seeLink('Admin Usuario');
 
 
