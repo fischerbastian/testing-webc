@@ -1,9 +1,9 @@
 <?php
 // Loguear como Alumnmo
 $I = new AcceptanceTester($scenario);
-$I->wantTo('Log In Alumno');
+$I->wantTo('Log in as a student and check attendance');
 $I->amOnPage('/?lang=es');
-$I->click('Log in', 'div.logininfo');
+$I->click('Entrar', 'div.logininfo');
 $I->fillField('username', 'alumno1');
 $I->fillField('password', 'pepito.P0');
 $I->click('loginbtn');

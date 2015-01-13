@@ -1,9 +1,9 @@
 <?php
 // Login as teacher
 $I = new AcceptanceTester($scenario);
-$I->wantTo('Log In Admin');
+$I->wantTo('Check attendance by students');
 $I->amOnPage('/?lang=es');
-$I->click('Log in', 'div.logininfo');
+$I->click('Entrar', 'div.logininfo');
 $I->fillField('username', 'profesor1');
 $I->fillField('password', 'pepito.P0');
 $I->click('loginbtn');
