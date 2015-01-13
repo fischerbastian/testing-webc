@@ -13,6 +13,7 @@ $I->seeLink('profesor 1');
 // Ver asistencia por alumno
 
 // change attendance state
+
 $I->amOnPage('');	//rellenar con direccion de pagina
 $token = $I->grabTextFrom(''); //rellenar con informacion del div en donde aparece porcentaje
 $I->see('Asistencias de');

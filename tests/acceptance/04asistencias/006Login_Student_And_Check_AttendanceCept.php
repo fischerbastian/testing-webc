@@ -10,6 +10,7 @@ $I->click('loginbtn');
 $I->see('Usted se ha identificado como', 'div.logininfo');
 $I->seeLink('Alumno 1');
 
+
 // Checkear Block UAI
 $I->see('UAI','div.block_uai.block.block_navigation');
 $I->click('Asistencias');

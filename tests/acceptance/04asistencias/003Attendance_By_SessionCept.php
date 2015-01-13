@@ -10,6 +10,7 @@ $I->click('loginbtn');
 $I->see('Usted se ha identificado como', 'div.logininfo');
 $I->seeLink('profesor 1');
 
+
 // Ver asistencia por Sesión
 $I->see('Ver por sesión','');	//ingresar direccion del div en el cual se encuentra la frase
 $I->click('Ver por sesión','');		//ingresar direccion del div(pestana) en el cual se encuentra la frase

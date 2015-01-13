@@ -10,6 +10,7 @@ $I->click('loginbtn');
 $I->see('Usted se ha identificado como', 'div.logininfo');
 $I->seeLink('profesor 1');
 
+
 // Entrar al curso
 $I->amOnPage('/?lang=es');
 $I->see('Test Course A');
