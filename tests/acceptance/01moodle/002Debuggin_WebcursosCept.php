@@ -9,6 +9,7 @@ $I->click('loginbtn');
 $I->see('Usted se ha identificado como', 'div.logininfo');
 $I->seeLink('Admin Usuario');
 
+
 // Debuggin Activation
 $I->amOnPage('/?lang=es');
 $I->see('Administración del sitio');
