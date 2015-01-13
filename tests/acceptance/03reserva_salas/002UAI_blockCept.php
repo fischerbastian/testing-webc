@@ -2,7 +2,7 @@
 
 // Log In Admin
 $I = new AcceptanceTester($scenario);
-$I->wantTo('Check UAI block enabled');
+$I->wantTo('Check if UAI block is enabled');
 $I->amOnPage('/?lang=en');
 $I->click('Log in', 'div.logininfo');
 $I->fillField('username', 'admin');
