@@ -14,6 +14,6 @@ $I->seeLink('Admin Usuario');
 
 $I->amOnPage('/admin/settings.php?section=local_uai');
 $I->see('UAI');
-$I->checkoption('s__local_uai_debug');
+$I->checkoption('#id_s__local_uai_debug');
 $I->click('Guardar cambios');
 ?>
