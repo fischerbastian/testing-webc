@@ -11,12 +11,6 @@ $I->seeLink('Admin Usuario');
 
 
 // Email Activation
-$I->amOnPage('/?lang=es');
-$I->see('Administración del sitio');
-$I->click('Administración del sitio');
-$I->click('Extensiones');
-$I->click('Mensajes de salida');
-$I->click('Email');
 $I->amOnPage('/admin/settings.php?section=messagesettingemail');
 $I->see('Email');
 $I->fillField('s__smtphosts','mx1.uai.cl');
