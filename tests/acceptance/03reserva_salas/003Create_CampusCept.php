@@ -14,7 +14,7 @@ $I->seeLink('Admin Usuario');
 $I->amOnPage('local/reservasalas/sedes.php?lang=en');
 $I->see('Create new campus');
 $I->click('Create new campus');
-$I->fillField('sede', 'Peñalolen');
+$I->fillField('sede', 'Penalolen');
 $I->click('submitbutton');
-$I->see('Peñalolen');
+$I->see('Penalolen');
 ?>
