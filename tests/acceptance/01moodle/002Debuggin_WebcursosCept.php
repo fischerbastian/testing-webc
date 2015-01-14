@@ -1,6 +1,6 @@
 <?php
 $I = new AcceptanceTester($scenario);
-$I->wantTo('Log in as an admin');
+$I->wantTo('Activate Debuggin');
 $I->amOnPage('/?lang=es');
 $I->click('Entrar', 'div.logininfo');
 $I->fillField('username', 'admin');
