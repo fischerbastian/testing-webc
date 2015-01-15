@@ -17,6 +17,7 @@ $I->amOnPage('/?lang=en');
 $I->click('Test Course A');
 $course_id = $I->grabFromCurrentUrl('/id=(\d+)/');
 $I->amOnPage('enrol/users.php/?lang=en&id='.$course_id);
+//TODO revisar este paso, ya que no se verifica si se abre el popup
 $I->click('//input[@value="Enrol users"]');
 
 
