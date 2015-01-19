@@ -10,7 +10,16 @@ $I->click('loginbtn');
 $I->see('Usted se ha identificado como', 'div.logininfo');
 $I->seeLink('profesor 1');
 
+//Entrar al curso
+$I->amOnPage('/?lang=en');
+$I->click('Test Course A');
+$course_id = $I->grabFromCurrentUrl('/id=(\d+)/');
+$I->amOnPage('/course/view.php?id='.$course_id);
+
 // Ver asistencia por alumno
+$I->amOnPage('/local/attendance/viewstudentrecord.php?courseid='.$course_id);
+$I->see('Attendance Record');
+
 
 // change attendance state
 
