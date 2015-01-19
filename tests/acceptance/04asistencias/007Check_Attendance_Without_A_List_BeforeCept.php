@@ -1,25 +1,21 @@
 <?php
 // Loguear como Alumno
+// Loguear como Alumno
 $I = new AcceptanceTester($scenario);
-$I->wantTo('Check attendance without a list before');
-$I->amOnPage('/?lang=es');
-$I->click('Entrar', 'div.logininfo');
+$I->wantTo('Attendance history');
+$I->amOnPage('/?lang=en');
+$I->click('Log in');
 $I->fillField('username', 'alumno1');
 $I->fillField('password', 'pepito.P0');
 $I->click('loginbtn');
-$I->see('Usted se ha identificado como', 'div.logininfo');
-$I->seeLink('alumno 1');
+$I->see('You are logged in as ');
+$I->seeLink('ALUMNO 1');
 
-// Checkear Block UAI
+$I->amOnPage('/?lang=en');
 
-$I->see('UAI','div.block_uai.block.block_navigation');
-$I->click('Asistencias');
-$I->see('Marcar asistencia');
+// Ver historial de asistencias
+$I->seeElement('//a[@href="http://localhost/moodle/local/attendance/markattendance.php?courseid=1"]');
+$I->amOnPage('/local/attendance/markattendance.php');	
+$I->see('No sessions open');
 
-// Marcar asistencia sin tener ningun curso con lista
-$I->click('Marcar asistencia');
-$I->amOnPage('');	// insertar direccion de pagina a la cual se redirige
-$I->see('No hay ninguna sesión abierta en tus cursos.');
-$I->click('Volver');
-$I->amOnPage('');	// insertar direccion de pagina a la cual se redirige
 ?>
