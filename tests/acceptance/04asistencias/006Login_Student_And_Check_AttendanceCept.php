@@ -1,16 +1,17 @@
 <?php
-// Loguear como Alumnmo
+
+use Codeception\Module\UserController;
+
 $I = new AcceptanceTester($scenario);
+$U = new UserController($I);
+
 $I->wantTo('Log in as a student and check attendance');
 
 //Entrar como profesor y empezar a pasar lista
-$I->amOnPage('/?lang=en');
-$I->click('Log in', 'div.logininfo');
-$I->fillField('username', 'profesor1');
-$I->fillField('password', 'pepito.P0');
-$I->click('loginbtn');
-$I->see('You are logged in as ');
-$I->seeLink('PROFESOR 1');
+
+$U->login('profesor1', 'pepito.P0','PROFESOR 1');
+
+
 $I->amOnPage('/?lang=en');
 $I->click('Test Course A');
 $course_id = $I->grabFromCurrentUrl('/id=(\d+)/');

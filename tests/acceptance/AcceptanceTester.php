@@ -1584,4 +1584,6 @@ class AcceptanceTester extends \Codeception\Actor
     public function dontSeeInTitle($title) {
         return $this->scenario->runStep(new \Codeception\Step\Assertion('dontSeeInTitle', func_get_args()));
     }
+    
+    
 }

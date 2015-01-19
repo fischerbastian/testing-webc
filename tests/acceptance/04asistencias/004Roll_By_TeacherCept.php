@@ -1,14 +1,14 @@
 <?php
+
+use Codeception\Module\UserController;
+
 // Loguear como Profesor
+
 $I = new AcceptanceTester($scenario);
+$U = new UserController($I);
+
 $I->wantTo('Roll by teacher');
-$I->amOnPage('/?lang=es');
-$I->click('Entrar', 'div.logininfo');
-$I->fillField('username', 'profesor1');
-$I->fillField('password', 'pepito.P0');
-$I->click('loginbtn');
-$I->see('Usted se ha identificado como', 'div.logininfo');
-$I->seeLink('profesor 1');
+$U->login('profesor1', 'pepito.P0','PROFESOR 1');
 
 
 // Entrar al curso
@@ -27,8 +27,8 @@ $I->see('Pasar lista');
 $I->click('Pasar lista');
 $I->amOnPage('');	//insertar direccion de pagina a la que se redirige
 $I->see('Pasar lista');
-$I->see('Abrir una sesión');
-$I->click('Abrir una sesión','');	//rellenar direccion del div(boton) en el cual se encuentra la frase
+$I->see('Abrir una sesiï¿½n');
+$I->click('Abrir una sesiï¿½n','');	//rellenar direccion del div(boton) en el cual se encuentra la frase
 $I->amOnPage('');	//ingresar la direccion de la pagina a la cual se redirige
 $I->see('Pasando lista...');
 

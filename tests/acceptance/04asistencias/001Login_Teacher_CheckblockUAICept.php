@@ -1,14 +1,13 @@
 <?php
+
+use Codeception\Module\UserController;
 // Loguear como Profesor
+
 $I = new AcceptanceTester($scenario);
+$U = new UserController($I);
+
 $I->wantTo('Log in as a teacher and check block uai with all attendance functions');
-$I->amOnPage('/?lang=en');
-$I->click('Log in');
-$I->fillField('username', 'profesor1');
-$I->fillField('password', 'pepito.P0');
-$I->click('loginbtn');
-$I->see('You are logged in as ');
-$I->seeLink('PROFESOR 1');
+$U->login('profesor1', 'pepito.P0','PROFESOR 1');
 
 //Entrar al curso
 $I->amOnPage('/?lang=en');

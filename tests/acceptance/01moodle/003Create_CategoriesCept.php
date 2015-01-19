@@ -1,15 +1,12 @@
 <?php 
 
-// Log In Admin
+use Codeception\Module\UserController;
+
 $I = new AcceptanceTester($scenario);
+$U = new UserController($I);
+
 $I->wantTo('Create Webcursos categories');
-$I->amOnPage('/?lang=en');
-$I->click('Log in', 'div.logininfo');
-$I->fillField('username', 'admin');
-$I->fillField('password', 'pepito.P0');
-$I->click('loginbtn');
-$I->see('You are logged in as', 'div.logininfo');
-$I->seeLink('Admin Usuario');
+$U->login('admin', 'pepito.P0', 'Admin Usuario');
 
 // Category "Pregrado" is created
 $I->amOnPage('course/management.php/?lang=en');
@@ -35,7 +32,7 @@ $I->click('submitbutton');
 
 $I->amOnPage('course/management.php/?lang=en');
 
-// Subcategory "Pregrado Viña" is created
+// Subcategory "Pregrado Viï¿½a" is created
 
 $I->seeLink('Create new category');
 $I->click('Create new category');

@@ -1,13 +1,12 @@
 <?php 
+
+use Codeception\Module\UserController;
+
 $I = new AcceptanceTester($scenario);
+$U = new UserController($I);
+
 $I->wantTo('Change Colour Theme');
-$I->amOnPage('/?lang=es');
-$I->click('Entrar', 'div.logininfo');
-$I->fillField('username', 'admin');
-$I->fillField('password', 'pepito.P0');
-$I->click('loginbtn');
-$I->see('Usted se ha identificado como ');
-$I->seeLink('Admin Usuario');
+$U->login('admin', 'pepito.P0', 'Admin Usuario');
 
 $I->amOnPage('/admin/settings.php?section=theme_essential_generic');
 
