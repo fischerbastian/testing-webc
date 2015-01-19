@@ -18,7 +18,9 @@ $I->amOnPage('/course/view.php?id='.$course_id); // esto comprueba que tomo la i
 $I->amOnPage('/local/attendance/attendance.php?courseid='.$course_id);
 $I->click('//section[@id="region-main"]/div[2]/div/form/div/input');
 $I->see('Close this session');
-$I->click('Log out');
+$I->amOnPage('/login/index.php?lang=en');
+$I->click('//input[@value="Log out"]');
+$I->see('Log in');
 
 // Loguear como Alumnmo
 $I->amOnPage('/login/index.php?lang=en');
@@ -31,9 +33,9 @@ $I->see('You are logged in as ');
 $I->seeLink('ALUMNO 1');
 
 // Marcar asistencia
-$I->amOnPage('/local/attendance/attendance.php?courseid='.$course_id);
-$I->seeElement('//a[@href="http://localhost/moodle/local/attendance/markattendance.php?courseid=1"]');
-$I->amOnPage('/local/attendance/markattendance.php?courseid=1');	
+$I->amOnPage('/?lang=en');
+$I->seeElement('//a[contains(text(),"Mark Attendance")]');
+$I->amOnPage('/local/attendance/markattendance.php?courseid=1"');	
 $I->see('Mark Attendance');
 $I->click('//input[@value="Mark Attendance"]');
 $I->see('Attendance marked');
