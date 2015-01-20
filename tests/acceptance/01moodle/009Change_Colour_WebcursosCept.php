@@ -9,7 +9,7 @@ $I->wantTo('Change Colour Theme');
 $U->login('admin', 'pepito.P0', 'Admin Usuario');
 
 // Change Colour
-$I->amOnPage('/admin/settings.php?section=theme_essential_color&lang=es');
+$I->amOnPage('/admin/settings.php?section=theme_essential_color');
 $I->fillField('s_theme_essential_themecolor','#000000');
 $I->fillField('s_theme_essential_themehovercolor','#555555');
 $I->fillField('s_theme_essential_footerurlcolor','#FFB400');
@@ -26,5 +26,5 @@ $I->checkOption('#id_s_theme_essential_enablealternativethemecolors3');
 $I->fillField('s_theme_essential_alternativethemename3','Grafito WebC');
 $I->fillField('s_theme_essential_alternativethemecolor3','#747474');
 $I->fillField('s_theme_essential_alternativethemehovercolor3','#555555');
-$I->click('Guardar cambios');
+$I->click('Save Changes');
 ?>

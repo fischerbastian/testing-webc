@@ -533,7 +533,7 @@ border-bottom-color: transparent;
 }
 		
 		');
-$I->click('Guardar cambios');
+$I->click('Save Changes');
 
 
 

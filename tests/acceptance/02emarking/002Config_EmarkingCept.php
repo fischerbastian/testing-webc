@@ -29,5 +29,5 @@ $I->checkOption('#id_s__emarking_enableprinting');
 $I->fillField('s__emarking_printername','Mensaje de prueba');
 
 
-$I->click('Guardar cambios');
+$I->click('Save Changes');
 ?>
