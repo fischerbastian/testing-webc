@@ -25,7 +25,7 @@ $I->see('Attendance Record');
 $I-> seeElement('//section[@id="region-main"]/div[2]/table/tbody/tr/td[4]/a/img');
 $I->amOnPage("/local/attendance/viewstudentrecord.php?action=view_student_details&courseid=3&userid=3");
 $I->see('Total');
-// $token = $I->grabTextFrom('#yui_3_17_2_2_1421700648904_11');  ++ no existe forma de hacer grab al texto
+// $token = $I->grabTextFrom('#yui_3_17_2_2_1421700648904_11');  ++ no existe forma de hacer grab al texto por el momento
 $I->checkoption('//td[3]/input');		 
 $I->selectOption('#id_action_for_checked','Mark as absent');
 $I->click('Apply');
@@ -36,7 +36,7 @@ $I->amOnPage('/local/attendance/viewstudentrecord.php?courseid='.$course_id);
 $I-> seeElement('//tr[2]/td[4]/a/img');
 $I->amOnPage("/local/attendance/viewstudentrecord.php?action=view_student_details&courseid=3&userid=4");
 $I->see('Total');
-// $token = $I->grabTextFrom('#yui_3_17_2_2_1421700648904_11');  ++ no existe forma de hacer grab al texto
+// $token = $I->grabTextFrom('#yui_3_17_2_2_1421700648904_11');  ++ no existe forma de hacer grab al texto por el momento
 $I->checkoption('//td[3]/input');		
 $I->selectOption('#id_action_for_checked','Mark as absent');
 $I->click('Apply');
@@ -47,7 +47,7 @@ $I->amOnPage('/local/attendance/viewstudentrecord.php?courseid='.$course_id);
 $I-> seeElement('//a[@href="http://localhost/moodle/local/attendance/viewstudentrecord.php?action=view_student_details&courseid=3&userid=5"]');
 $I->amOnPage("/local/attendance/viewstudentrecord.php?action=view_student_details&courseid=3&userid=5");
 $I->see('Total');
-// $token = $I->grabTextFrom('#yui_3_17_2_2_1421700648904_11');  ++ no existe forma de hacer grab al texto
+// $token = $I->grabTextFrom('#yui_3_17_2_2_1421700648904_11');  ++ no existe forma de hacer grab al texto por el momento
 $I->checkoption('//td[3]/input');		
 
 $I->selectOption('#id_action_for_checked','Mark as absent');
@@ -59,7 +59,7 @@ $I->amOnPage('/local/attendance/viewstudentrecord.php?courseid='.$course_id);
 $I-> seeElement('//section[@id="region-main"]/div[2]/table/tbody/tr[4]/td[4]/a/img');
 $I->amOnPage("/local/attendance/viewstudentrecord.php?action=view_student_details&courseid=3&userid=6");
 $I->see('Total');
-// $token = $I->grabTextFrom('#yui_3_17_2_2_1421700648904_11');  ++ no existe forma de hacer grab al texto
+// $token = $I->grabTextFrom('#yui_3_17_2_2_1421700648904_11');  ++ no existe forma de hacer grab al texto por el momento 
 $I->checkoption('//td[3]/input');		
 $I->selectOption('#id_action_for_checked','Mark as absent');
 $I->click('Apply');
@@ -70,7 +70,7 @@ $I->amOnPage('/local/attendance/viewstudentrecord.php?courseid='.$course_id);
 $I-> seeElement('//a[@href="http://localhost/moodle/local/attendance/viewstudentrecord.php?action=view_student_details&courseid=3&userid=7"]');
 $I->amOnPage("/local/attendance/viewstudentrecord.php?action=view_student_details&courseid=3&userid=7");
 $I->see('Total');
-// $token = $I->grabTextFrom('#yui_3_17_2_2_1421700648904_11');  ++ no existe forma de hacer grab al texto
+// $token = $I->grabTextFrom('#yui_3_17_2_2_1421700648904_11');  ++ no existe forma de hacer grab al texto por el momento
 $I->checkoption('//td[3]/input');
 $I->selectOption('#id_action_for_checked','Mark as absent');
 $I->click('Apply');
@@ -98,6 +98,9 @@ $I->click('Apply');
     $I->see("Your shopping cart is empty.");
  */
 
+
+
+// FALTA POR TERMINAR ALGUNAS COSAS
 
 ?>
 
