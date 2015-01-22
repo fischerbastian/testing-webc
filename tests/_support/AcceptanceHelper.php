@@ -75,14 +75,27 @@ class Sala {
 		}
 	}
 }
+class Horario{
+	
+	public static $modulo = "#1|A,8:15-9:25
+			#1|B,8:30-9:40
+			#2,10:00-11:10
+			#3,11:30-12:40
+			#4|A,13:00-14:10
+			#4|B,13:30-14:40
+			#5,15:00-16:10
+			#6,16:30-17:40
+			#7,18:00-19:10
+			#8,19:30-20:40";
+}
 
 class Edificio {
 	
 	public $nombre_edificio;
 	public $salas = array();
-	public static $modulo;
+	public $modulo;
 	
-	function __construct($nombre, $salas_asociadas, $modulo){
+	function __construct($nombre, $salas_asociadas){
 		
 		/**
 		 * @param string $nombre
@@ -90,7 +103,8 @@ class Edificio {
 		 */
 		
 		$this->nombre_edificio = $nombre;
-		$this->salas = $salas_asociadas;	
+		$this->salas = $salas_asociadas;
+		$this->modulo = Horario::$modulo;	
 	}
 	
 	function mostrar_salas(){

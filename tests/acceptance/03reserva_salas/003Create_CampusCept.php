@@ -17,11 +17,6 @@ $I->amOnPage('local/reservasalas/sedes.php?lang=en');
 
 $I->see('Create new campus');
 
-
-
-
-//TODO cambiar $uai array por una funcion y crear objeto
-	
 for ($i = 0; $i < count($R->crear()); $i++) {
 	
 	$I->dontSee($R->crear()[$i]->nombre_sede);
