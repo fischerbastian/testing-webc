@@ -13,5 +13,5 @@ $U->login('admin', 'pepito.P0', 'Admin Usuario');
 $I->amOnPage('/admin/settings.php?section=messagesettingemail');
 $I->see('Email');
 $I->fillField('s__smtphosts','mx1.uai.cl');
-$I->click('Save Changes');
+$I->click('Save changes');
 ?>
