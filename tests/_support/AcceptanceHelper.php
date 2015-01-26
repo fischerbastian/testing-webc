@@ -107,10 +107,12 @@ class Edificio {
 		$this->modulo = Horario::$modulo;	
 	}
 	
-	function mostrar_salas(){
+	function contar_tipo_sala($tipo_sala){
 		for ($i = 0; $i < count($this->salas); $i++) {
-			echo $this->salas[$i]->nombre_sala.'<br>';
+			 $tipos[] =  $this->salas[$i]->tipo;
 		}
+		
+		echo array_count_values($tipos)[$tipo_sala];
 	}
 } 
 

@@ -2,7 +2,7 @@
 Testing Webcursos moodle with [Codeception](http://codeception.com//)
 
 
-Instalación
+InstalaciÃ³n
 --------------------------------------
 
 Para instalar Codeception es necesario descargar el archivo
@@ -15,7 +15,7 @@ Luego ejecutar el siguiente comando:
 php codecept.phar bootstrap
 ```
 
-Ejecución
+EjecuciÃ³n
 --------------------------------------
 
 Para ejecutar los tests de aceptacion programados, ejecutar
@@ -29,8 +29,16 @@ php codecept.phar run acceptance
 Condiciones iniciales de testeo
 --------------------------------------
 
-Para ejecutar los tests de aceptación, es necesario que moodle
+Para ejecutar los tests de aceptaciï¿½n, es necesario que moodle
 tenga cargado con anterioridad las siguientes caracteristicas:
 
 - **Essential Theme**
 - **Bloque UAI**
+
+Proyectos a futuro
+--------------------------------------
+
+La siguiente lista corresponde a mejoras y proyectos a futuro
+para mejorar el desempeÃ±o y orden de los testeos:
+
+- **
