@@ -1,7 +1,7 @@
 <?php
 namespace Codeception\Module;
 
-
+//============================================================================
 // Login 
 class IndexPage
 {
@@ -14,6 +14,7 @@ class IndexPage
     public static $submitButton = "loginbtn";
     public static $loggedField = "div.logininfo";
 }
+
 
 class UserController
 {
@@ -33,6 +34,9 @@ class UserController
 		$this->user->seeLink($name);
 	}
 }
+
+
+//============================================================================
 
 // Reserva de Salas
 
@@ -180,7 +184,7 @@ class ReservaController
 		return $uai;
 	}
 }
-
+//============================================================================
 
 class AcceptanceHelper extends \Codeception\Module
 {
