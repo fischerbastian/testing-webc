@@ -23,7 +23,7 @@ tenga cargado con anterioridad las siguientes caracteristicas:
 - **eMarking**
 - **Reserva de salas**
 - **Local facebook**
-- 
+
 
 Proyectos a futuro
 --------------------------------------
