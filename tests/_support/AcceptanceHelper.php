@@ -4,13 +4,10 @@ namespace Codeception\Module;
 
 class LoginPage
 {
-	// URL of a page
-	public static $URL = '/login/index.php';
-	
-	// This properties define a UI map for Login Page
-	public static $usernameField = "username";
-	public static $passwordField = "password";
-	public static $submitButton = "loginbtn";
+	public static $url = '/login/index.php';
+	public static $usernamefield = 'username';
+	public static $passwordfield = 'password';
+	public static $submitbutton = 'loginbtn';
 }
 
 class LoginController
@@ -21,15 +18,38 @@ class LoginController
 		$this->user = $I;
 	}
 
-	public function login($username,$password,$name) {
-		$this->user->amOnPage(LoginPage::$URL);
-		$this->user->fillField(LoginPage::$usernameField, $username);
-		$this->user->fillField(LoginPage::$passwordField, $password);
-		$this->user->click(LoginPage::$submitButton);
+	public function login($username,$password,$name){
+		$this->user->amOnPage(LoginPage::$url);
+		$this->user->fillField(LoginPage::$usernamefield, $username);
+		$this->user->fillField(LoginPage::$passwordfield, $password);
+		$this->user->click(LoginPage::$submitbutton);
 		$this->user->seeLink($name);
 	}
 }
 
+class CategoryPage
+{
+	public static $editcategoryurl = '/course/editcategory.php?parent=1';
+	public static $categoryparent = 'parent';
+	public static $categorynamefield = 'name';
+	public static $submitbutton = 'submitbutton';
+}
+
+class CategoryController
+{
+	protected $user;
+	
+	public function __construct(\AcceptanceTester $I){
+		$this->user = $I;
+	}
+	
+	public function createCategory($categoryname, $categoryparent){
+		$this->user->amOnPage(CategoryPage::$editcategoryurl);
+		$this->user->selectOption(CategoryPage::$categoryparent, $categoryparent);
+		$this->user->fillField(CategoryPage::$categorynamefield, $categoryname);
+		$this->user->click(CategoryPage::$submitbutton);
+	}
+}
 
 //============================================================================
 
