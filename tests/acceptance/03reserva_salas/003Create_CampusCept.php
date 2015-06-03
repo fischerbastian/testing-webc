@@ -1,17 +1,14 @@
 <?php
 
-use Codeception\Module\UserController;
+use Codeception\Module\LoginController;
 use Codeception\Module\ReservaController;
 
-
-// Log In Admin
-
 $I = new AcceptanceTester($scenario);
-$U = new UserController($I);
+$U = new LoginController($I);
 $R = new ReservaController($I);
 
 $I->wantTo('Create UAI Campus');
-$U->login('admin', 'pepito.P0', 'Admin Usuario');
+$U->login('admin', 'pepito.P0', 'Admin User');
 
 $I->amOnPage('local/reservasalas/sedes.php?lang=en');
 

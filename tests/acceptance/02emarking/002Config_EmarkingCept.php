@@ -1,12 +1,12 @@
 <?php
 
-use Codeception\Module\UserController;
+use Codeception\Module\LoginController;
 
 $I = new AcceptanceTester($scenario);
-$U = new UserController($I);
+$U = new LoginController($I);
 
 $I->wantTo('Config SMS');
-$U->login('admin', 'pepito.P0','Admin Usuario');
+$U->login('admin', 'pepito.P0','Admin User');
 
 $I->amOnPage('/admin/settings.php?section=modsettingemarking');
 

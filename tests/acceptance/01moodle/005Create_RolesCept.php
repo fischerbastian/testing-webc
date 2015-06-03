@@ -1,12 +1,12 @@
 <?php
 
-use Codeception\Module\UserController;
+use Codeception\Module\LoginController;
 
 $I = new AcceptanceTester($scenario);
-$U = new UserController($I);
+$U = new LoginController($I);
 
 $I->wantTo('Create user roles for emarking and reserva de salas');
-$U->login('admin', 'pepito.P0', 'Admin Usuario');
+$U->login('admin', 'pepito.P0', 'Admin User');
 
 $I->amOnPage('admin/roles/define.php?action=add&lang=en');
 $I->click('submitbutton');

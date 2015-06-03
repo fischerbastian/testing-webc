@@ -1,12 +1,12 @@
 <?php
 
-use Codeception\Module\UserController;
+use Codeception\Module\LoginController;
 
 $I = new AcceptanceTester($scenario);
-$U = new UserController($I);
+$U = new LoginController($I);
 
 $I->wantTo('Assign Biblioteca System rol to "ADMINISTRADOR BIBLIOTECA" user');
-$U->login('admin', 'pepito.P0','Admin Usuario');
+$U->login('admin', 'pepito.P0','Admin User');
 
 $I->amOnPage('admin/roles/assign.php?contextid=1&lang=en');
 $I->see('Assign roles in System');
