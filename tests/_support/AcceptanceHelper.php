@@ -1,20 +1,19 @@
 <?php
 namespace Codeception\Module;
 
-//============================================================================
-// Login 
-class IndexPage
+
+class LoginPage
 {
-    // URL of a page
-    public static $URL = '/login/index.php';
-    // This properties define a UI map for Login Page
-    public static $usernameField = "username";
-    public static $passwordField = "password";
-    public static $submitButton = "loginbtn";
+	// URL of a page
+	public static $URL = '/login/index.php';
+	
+	// This properties define a UI map for Login Page
+	public static $usernameField = "username";
+	public static $passwordField = "password";
+	public static $submitButton = "loginbtn";
 }
 
-
-class UserController
+class LoginController
 {
 	protected $user;
 
@@ -23,10 +22,10 @@ class UserController
 	}
 
 	public function login($username,$password,$name) {
-		$this->user->amOnPage(IndexPage::$URL);
-		$this->user->fillField(IndexPage::$usernameField, $username);
-		$this->user->fillField(IndexPage::$passwordField, $password);
-		$this->user->click(IndexPage::$submitButton);
+		$this->user->amOnPage(LoginPage::$URL);
+		$this->user->fillField(LoginPage::$usernameField, $username);
+		$this->user->fillField(LoginPage::$passwordField, $password);
+		$this->user->click(LoginPage::$submitButton);
 		$this->user->seeLink($name);
 	}
 }
