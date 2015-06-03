@@ -51,6 +51,31 @@ class CategoryController
 	}
 }
 
+class CoursePage
+{
+	public static $addcourseurl = '/course/edit.php?category=1';
+	public static $coursename = 'fullname';
+	public static $shortname = 'shortname';
+	public static $coursecategory = 'category';
+	public static $submitbutton = 'submitbutton';
+}
+
+class CourseController
+{
+	protected $user;
+	
+	public function __construct(\AcceptanceTester $I){
+		$this->user = $I;
+	}
+	
+	public function createCourse($coursename, $shortname, $category){
+		$this->user->amOnPage(CoursePage::$addcourseurl);
+		$this->user->fillField(CoursePage::$coursename, $coursename);
+		$this->user->fillField(CoursePage::$shortname, $shortname);
+		$this->user->selectOption(CoursePage::$coursecategory, $category);
+		$this->user->click(CoursePage::$submitbutton);	
+	}
+}
 //============================================================================
 
 // Reserva de Salas
