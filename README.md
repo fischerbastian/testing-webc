@@ -1,5 +1,5 @@
 # testing-webc
-Testing Webcursos moodle with [Codeception](http://codeception.com//)
+Testing Webc es un proyecto de testeo automático de moodle [Webcursos](http://webcursos.uai.cl/) de la universidad Adolfo Ibáñez, mediante el framework [Codeception](http://codeception.com/)
 
 
 Ejecución
@@ -23,13 +23,9 @@ tenga cargado con anterioridad las siguientes caracteristicas:
 - **eMarking**
 - **Reserva de salas**
 - **Local facebook**
+- **Message facebook**
 
 
-Proyectos a futuro
+Sugerencias, reportes o mejoras
 --------------------------------------
-
-La siguiente lista corresponde a mejoras y proyectos a futuro
-para mejorar el desempeño y orden de los testeos:
-
-- **Automatizar matriculación de alumnos de prueba**
-- **Habilitar revisión en modo debug**
+Cualquier tipo de sugerencia, reporte de error o mejora al código contactar al email bastian.fischerg@gmail.com
