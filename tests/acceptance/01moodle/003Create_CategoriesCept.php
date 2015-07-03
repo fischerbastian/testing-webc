@@ -10,8 +10,7 @@ $O = new CategoryController($I);
 $I->wantTo('Create Webcursos categories');
 $U->login('admin', 'pepito.P0', 'Admin User');
 
-$O->createCategory('Pregrado', '0');
-$O->createCategory('Pregrado Santiago', 'Pregrado');
-$O->createCategory('Año 2015', 'Pregrado / Pregrado Santiago');
+$O->createCategory('QA', '0');
+$O->createCategory('QA Invierno 2015', 'QA');
 
 ?>
