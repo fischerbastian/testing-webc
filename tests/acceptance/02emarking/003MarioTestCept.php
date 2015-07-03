@@ -63,7 +63,6 @@ $I->fillField('cmidnumber','');
 $I->selectOption('groupmode','0');
 
 
-
 $I->click('id_submitbutton2');
 
 ////////
