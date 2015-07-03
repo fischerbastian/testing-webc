@@ -4,19 +4,26 @@ use Codeception\Module\LoginController;
 $I = new AcceptanceTester($scenario);
 $U = new LoginController($I);
 
-$I->wantTo('');
+$I->wantTo('Create ');
 $U->login('admin', 'pepito.P0','Admin User');
 
-$I->click('Turn editing on');
-$I->amOnPage('course/modedit.php?add=emarking&type=&course=7&section=0&return=0&sr=0');
+$I->amOnPage('/');
+$I->see('Test Course Sec.1 2015');
+$I->click('Test Course Sec.1 2015');
+$courseid = $I->grabFromCurrentUrl('/id=(\d+)/'); 
 
-$I->fillField('name','tu mama');
+$I->amOnPage('course/modedit.php?add=emarking&type=&course='.$courseid.'&section=0&return=0&sr=0');
 
+// General
+$I->fillField('name','tu papi');
+
+// Marking
 $I->selectOption('totalpages','2');
 $I->selectOption('anonymous','0');
-
+// falta custom marks
 $I->checkOption('enableduedate');
 
+// Dates and Regrades
 $I->selectOption('markingduedate[day]','01');
 $I->selectOption('markingduedate[month]','February');
 $I->selectOption('markingduedate[year]','2015');
@@ -39,6 +46,7 @@ $I->selectOption('regradesclosedate[minute]','10');
 	
 $I->selectOption('peervisibility','1');
 
+//Grade
 $I->selectOption('gradecat','7');
 $I->selectOption('grademin','0');
 $I->selectOption('grade','7');
@@ -47,12 +55,13 @@ $I->checkOption('adjustslope');
 
 $I->fillField('adjustslopegrade','1');
 $I->fillField('adjustslopescore','1');
-	
+
+//Common module settings
 $I->fillField('cmidnumber','');
 $I->selectOption('groupmode','0');
 
 $I->click('id_submitbutton2');
 
-$I->seeLink('tu mama');
+$I->seeLink('tu papi');
 
 ?>
