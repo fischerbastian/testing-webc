@@ -17,25 +17,25 @@ $I->selectOption('anonymous','0');
 
 $I->checkOption('enableduedate');
 
-	$I->selectOption('markingduedate[day]','01');
-	$I->selectOption('markingduedate[month]','February');
-	$I->selectOption('markingduedate[year]','2015');
-	$I->selectOption('markingduedate[hour]','01');
-	$I->selectOption('markingduedate[minute]','05');
+$I->selectOption('markingduedate[day]','01');
+$I->selectOption('markingduedate[month]','February');
+$I->selectOption('markingduedate[year]','2015');
+$I->selectOption('markingduedate[hour]','01');
+$I->selectOption('markingduedate[minute]','05');
 
 $I->checkOption('regraderestrictdates');
 
-		$I->selectOption('regradesopendate[day]','01');
-		$I->selectOption('regradesopendate[month]','February');
-		$I->selectOption('regradesopendate[year]','2015');
-		$I->selectOption('regradesopendate[hour]','01');
-		$I->selectOption('regradesopendate[minute]','05');
+$I->selectOption('regradesopendate[day]','01');
+$I->selectOption('regradesopendate[month]','February');
+$I->selectOption('regradesopendate[year]','2015');
+$I->selectOption('regradesopendate[hour]','01');
+$I->selectOption('regradesopendate[minute]','05');
 	
-		$I->selectOption('regradesclosedate[day]','01');
-		$I->selectOption('regradesclosedate[month]','February');
-		$I->selectOption('regradesclosedate[year]','2015');
-		$I->selectOption('regradesclosedate[hour]','01');
-		$I->selectOption('regradesclosedate[minute]','10');
+$I->selectOption('regradesclosedate[day]','01');
+$I->selectOption('regradesclosedate[month]','February');
+$I->selectOption('regradesclosedate[year]','2015');
+$I->selectOption('regradesclosedate[hour]','01');
+$I->selectOption('regradesclosedate[minute]','10');
 	
 $I->selectOption('peervisibility','1');
 
@@ -45,8 +45,8 @@ $I->selectOption('grade','7');
 
 $I->checkOption('adjustslope');
 
-	$I->fillField('adjustslopegrade','1');
-	$I->fillField('adjustslopescore','1');
+$I->fillField('adjustslopegrade','1');
+$I->fillField('adjustslopescore','1');
 	
 $I->fillField('cmidnumber','');
 $I->selectOption('groupmode','0');
