@@ -55,7 +55,8 @@ class MoodleController
 		$this->user->amOnPage(CategoryPage::$editcategoryurl);
 		$this->user->selectOption(CategoryPage::$categoryparent, $categoryparent);
 		$this->user->fillField(CategoryPage::$categorynamefield, $categoryname);
-		$this->user->click(CreateUserPage::$userlisturl);
+		$this->user->click(StandardForm::$submitbutton);
+		$this->user->seeLink($categoryname);
 	}
 	
 	public function createCourse($coursename, $shortname, $category){
@@ -63,7 +64,7 @@ class MoodleController
 		$this->user->fillField(CoursePage::$coursename, $coursename);
 		$this->user->fillField(CoursePage::$shortname, $shortname);
 		$this->user->selectOption(CoursePage::$coursecategory, $category);
-		$this->user->click(CreateUserPage::$userlisturl);
+		$this->user->click(StandardForm::$submitbutton);
 	}
 	
 	public function createUser($username, $password, $firstname, $lastname, $email){
