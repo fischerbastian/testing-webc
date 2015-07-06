@@ -1,9 +1,9 @@
 <?php
 
-use Codeception\Module\LoginController;
+use Codeception\Module\MoodleController;
 
 $I = new AcceptanceTester($scenario);
-$U = new LoginController($I);
+$U = new MoodleController($I);
 
 $I->wantTo('Assign Biblioteca System rol to "ADMINISTRADOR BIBLIOTECA" user');
 $U->login('admin', 'pepito.P0','Admin User');
@@ -22,6 +22,5 @@ $I->click('add');
 
 $I->amOnPage('admin/roles/assign.php?contextid=1&lang=en');
 $I->seeLink('ADMINISTRADOR BIBLIOTECA');
-
 
 ?>

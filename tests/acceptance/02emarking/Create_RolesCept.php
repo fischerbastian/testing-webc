@@ -1,9 +1,9 @@
 <?php
 
-use Codeception\Module\LoginController;
+use Codeception\Module\MoodleController;
 
 $I = new AcceptanceTester($scenario);
-$U = new LoginController($I);
+$U = new MoodleController($I);
 
 $I->wantTo('Create user roles for emarking and reserva de salas');
 $U->login('admin', 'pepito.P0', 'Admin User');

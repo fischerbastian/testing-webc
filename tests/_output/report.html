@@ -110,7 +110,7 @@
 
  <body>
  <div class="layout">
- <h1>Codeception Results <small><span style="color: green">OK</span> (6.6s)</small></h1>
+ <h1>Codeception Results <small><span style="color: green">OK</span> (7.7s)</small></h1>
 
 
 	 <table border="0" style="width: 100%;">
@@ -120,7 +120,7 @@
  </td>
 </tr>   <tr>
     <td>
-     <p class="scenarioSuccess" onclick="showHide('1', this)">[+] create webcursos categories (01moodle/003Create_CategoriesCept) (6.61s)</p>
+     <p class="scenarioSuccess" onclick="showHide('1', this)">[+] create  (02emarking/003MarioTestCept) (7.7s)</p>
     </td>
    </tr>
    <tr>
@@ -147,51 +147,147 @@
       </tr>
 
       <tr>
-       <td class="stepName">I am on page <span style="color: #732E81;">"/course/editcategory.php?parent=1"</span></td>
+       <td class="stepName">I am on page <span style="color: #732E81;">"/"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"parent","0"</span></td>
+       <td class="stepName">I see <span style="color: #732E81;">"Test Course Sec.1 2015"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I fill field <span style="color: #732E81;">"name","Pregrado"</span></td>
+       <td class="stepName">I click <span style="color: #732E81;">"Test Course Sec.1 2015"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I click <span style="color: #732E81;">"submitbutton"</span></td>
+       <td class="stepName">I grab from current url <span style="color: #732E81;">"/id=(\d+)/"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I am on page <span style="color: #732E81;">"/course/editcategory.php?parent=1"</span></td>
+       <td class="stepName">I am on page <span style="color: #732E81;">"course/modedit.php?add=emarking&type=&course=7&section=0&return=0&sr=0"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"parent","Pregrado"</span></td>
+       <td class="stepName">I fill field <span style="color: #732E81;">"name","tu mam32"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I fill field <span style="color: #732E81;">"name","Pregrado Santiago"</span></td>
+       <td class="stepName">I select option <span style="color: #732E81;">"totalpages","2"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I click <span style="color: #732E81;">"submitbutton"</span></td>
+       <td class="stepName">I select option <span style="color: #732E81;">"anonymous","0"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I am on page <span style="color: #732E81;">"/course/editcategory.php?parent=1"</span></td>
+       <td class="stepName">I check option <span style="color: #732E81;">"enableduedate"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"parent","Pregrado / Pregrado Santiago"</span></td>
+       <td class="stepName">I select option <span style="color: #732E81;">"markingduedate[day]","01"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I fill field <span style="color: #732E81;">"name","Año 2015"</span></td>
+       <td class="stepName">I select option <span style="color: #732E81;">"markingduedate[month]","February"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I click <span style="color: #732E81;">"submitbutton"</span></td>
+       <td class="stepName">I select option <span style="color: #732E81;">"markingduedate[year]","2015"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I select option <span style="color: #732E81;">"markingduedate[hour]","01"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I select option <span style="color: #732E81;">"markingduedate[minute]","05"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I check option <span style="color: #732E81;">"regraderestrictdates"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I select option <span style="color: #732E81;">"regradesopendate[day]","01"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I select option <span style="color: #732E81;">"regradesopendate[month]","February"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I select option <span style="color: #732E81;">"regradesopendate[year]","2015"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I select option <span style="color: #732E81;">"regradesopendate[hour]","01"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I select option <span style="color: #732E81;">"regradesopendate[minute]","05"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I select option <span style="color: #732E81;">"regradesclosedate[day]","01"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I select option <span style="color: #732E81;">"regradesclosedate[month]","February"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I select option <span style="color: #732E81;">"regradesclosedate[year]","2015"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I select option <span style="color: #732E81;">"regradesclosedate[hour]","01"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I select option <span style="color: #732E81;">"regradesclosedate[minute]","10"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I select option <span style="color: #732E81;">"peervisibility","1"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I select option <span style="color: #732E81;">"gradecat","7"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I select option <span style="color: #732E81;">"grademin","0"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I select option <span style="color: #732E81;">"grade","7"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I check option <span style="color: #732E81;">"adjustslope"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I fill field <span style="color: #732E81;">"adjustslopegrade","1"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I fill field <span style="color: #732E81;">"adjustslopescore","1"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I fill field <span style="color: #732E81;">"cmidnumber",""</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I select option <span style="color: #732E81;">"groupmode","0"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I click <span style="color: #732E81;">"id_submitbutton2"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName">I see link <span style="color: #732E81;">"tu mama"</span></td>
       </tr>
 
 

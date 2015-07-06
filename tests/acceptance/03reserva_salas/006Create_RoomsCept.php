@@ -1,9 +1,10 @@
 <?php
-use Codeception\Module\LoginController;
+
+use Codeception\Module\MoodleController;
 use Codeception\Module\ReservaController;
 
 $I = new AcceptanceTester($scenario);
-$U = new LoginController($I);
+$U = new MoodleController($I);
 $R = new ReservaController($I);
 
 $I->wantTo('Create UAI Rooms');

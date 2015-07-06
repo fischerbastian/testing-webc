@@ -1,8 +1,9 @@
 <?php
-use Codeception\Module\LoginController;
+
+use Codeception\Module\MoodleController;
 
 $I = new AcceptanceTester($scenario);
-$U = new LoginController($I);
+$U = new MoodleController($I);
 
 $I->wantTo('Create ');
 $U->login('admin', 'pepito.P0','Admin User');
@@ -16,6 +17,7 @@ $I->amOnPage('course/modedit.php?add=emarking&type=&course='.$courseid.'&section
 
 // General
 $I->fillField('name','tu papi');
+// falta description
 
 // Marking
 $I->selectOption('totalpages','2');

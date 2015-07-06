@@ -1,6 +1,6 @@
 <?php
 
-use Codeception\Module\LoginController;
+use Codeception\Module\MoodleController;
 
 $I = new AcceptanceTester($scenario);
 $U = new LoginController($I);
@@ -22,6 +22,5 @@ $I->click('add');
 
 $I->amOnPage('admin/roles/assign.php?contextid=1&lang=en');
 $I->seeLink('CENTRAL DE APUNTES');
-
 
 ?>
