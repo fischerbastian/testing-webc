@@ -1,12 +1,9 @@
 <?php
 
-use Codeception\Module\MoodleController;
-
 $I = new AcceptanceTester($scenario);
-$U = new MoodleController($I);
 
 $I->wantTo('Config SMS');
-$U->login('admin', 'pepito.P0','Admin User');
+$I->login('admin', 'pepito.P0','Admin User');
 
 $I->amOnPage('/admin/settings.php?section=modsettingemarking');
 
@@ -28,6 +25,6 @@ $I->checkOption('#id_s__emarking_justiceexperiment');
 $I->checkOption('#id_s__emarking_enableprinting');
 $I->fillField('s__emarking_printername','Mensaje de prueba');
 
-$I->click('Save Changes');
+$I->click('Save changes');
 
 ?>

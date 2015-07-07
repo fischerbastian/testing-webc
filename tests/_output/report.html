@@ -3,24 +3,23 @@
 	<title>Test results</title>
 	<meta charset='utf-8'>
 	<link href='http://fonts.googleapis.com/css?family=Varela+Round&v2' rel='stylesheet' type='text/css'>
-
+     <meta name="viewport" content="width=device-width, initial-scale=1">
 	 <style>
 		 .layout {
 		 margin: 0 auto;
-		 width: 960px;
+		 max-width: 1000px;
 
 		 }
-		 body { font-family: arial, serif; margin: 0; padding: 0; background: #333; }
-		 h1,h2,h3 { font-family: arial, serif; color: white; }
+		 body { font-family: arial, serif; margin: 0; padding: 0; background: #ecf0f1; font-size: 20px; }
+		 h1,h2,h3 { font-family: arial, serif; color: #7f8c8d; }
 		 h1 { font-size: 2.5em; }
 		 h2 { font-size: 1.3em; }
          h3 { font-size: 1em; color: #84BBDD; margin: 0.5em 0; }
 
-		 table { border: none; margin: 0; padding: 0; }
+		 table { border: none; margin: 0; padding: 0; font-size: 0.9em;}
 		 .scenarioStepsTable .stepName { padding: 5px; }
 
 		 .scenarioStepsTable td {
-		 font-size: 80%;
 		 border: 1px solid #ccc;
 		 font-family: 'Varela Round', arial;
 		 -webkit-border-radius: 5px;
@@ -37,44 +36,58 @@
 
 		 }
 
+         @media (max-width: 1200px) {
+           #toolbar-filter {
+             display: none !important;
+           }
+         }
+
+         .scenarioStepsTable .nostyle {
+             background: none;
+             border: none;
+         }
+
 		 p {
 		    cursor: pointer;
-		 padding: 5px;
-
-		 -webkit-border-radius: 5px;
-		 -moz-border-radius: 5px;
-		 border-radius: 5px;
-
 		 }
+
+         .scenarioRow>td>p {
+             padding: 5px;
+         }
+
+         .scenarioStepsTable .failedStep {
+             padding: 10px;
+             background: #ecf0f1;
+             border: 2px solid #e74c3c;
+             border-radius: 0px;
+             color:  #e74c3c;
+         }
+
+         .scenarioStepsTable .error {
+             background:  #999;
+             padding: 10px;
+             color: #fff;
+             border-radius: 0px;
+         }
+
+
+
+         .scenarioStepsTable.substeps td {
+             background: #bdc3c7;
+         }
 
 		 .header { font-size: large; font-weight: bold; }
 		 p.scenarioSuccess {
-		 background: rgb(157,213,58); /* Old browsers */
-		 background: -moz-linear-gradient(top, rgba(157,213,58,1) 0%, rgba(161,213,79,1) 50%, rgba(124,188,10,1) 100%); /* FF3.6+ */
-		 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(157,213,58,1)), color-stop(50%,rgba(161,213,79,1)), color-stop(100%,rgba(124,188,10,1))); /* Chrome,Safari4+ */
-		 background: -webkit-linear-gradient(top, rgba(157,213,58,1) 0%,rgba(161,213,79,1) 50%,rgba(124,188,10,1) 100%); /* Chrome10+,Safari5.1+ */
-		 background: -o-linear-gradient(top, rgba(157,213,58,1) 0%,rgba(161,213,79,1) 50%,rgba(124,188,10,1) 100%); /* Opera11.10+ */
-		 background: -ms-linear-gradient(top, rgba(157,213,58,1) 0%,rgba(161,213,79,1) 50%,rgba(124,188,10,1) 100%); /* IE10+ */
-		 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9dd53a', endColorstr='#7cbc0a',GradientType=0 ); /* IE6-9 */
-		 background: linear-gradient(top, rgba(157,213,58,1) 0%,rgba(161,213,79,1) 50%,rgba(124,188,10,1) 100%); /* W3C */
-
+    		 background: rgb(157,213,58); /* Old browsers */
 		 }
 
 
 		 .scenario { color: black; }
-		 p.scenarioFailed { color: black;
-		 background: rgb(204,0,0); /* Old browsers */
-		 background: -moz-linear-gradient(top, rgba(204,0,0,1) 0%, rgba(119,0,0,1) 100%); /* FF3.6+ */
-		 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(204,0,0,1)), color-stop(100%,rgba(119,0,0,1))); /* Chrome,Safari4+ */
-		 background: -webkit-linear-gradient(top, rgba(204,0,0,1) 0%,rgba(119,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
-		 background: -o-linear-gradient(top, rgba(204,0,0,1) 0%,rgba(119,0,0,1) 100%); /* Opera11.10+ */
-		 background: -ms-linear-gradient(top, rgba(204,0,0,1) 0%,rgba(119,0,0,1) 100%); /* IE10+ */
-		 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc0000', endColorstr='#770000',GradientType=0 ); /* IE6-9 */
-		 background: linear-gradient(top, rgba(204,0,0,1) 0%,rgba(119,0,0,1) 100%); /* W3C */
+		 p.scenarioFailed, p.scenarioError { color: black;
+		   background: #e74c3c
 		 }
 
-
-		 table.scenarioFailed tr:last-child { font-weight: bold; color: red }
+		 table.scenarioFailed tr:last-child { font-weight: bold; }
 
 		 td.scenarioSuccess { color: green }
 		 td.scenarioFailed { color: red }
@@ -89,9 +102,30 @@
 		 border-radius: 5px;
 		 padding: 20px;
 		 }
+		 ul#toolbar-filter {
+            display: block;
+            position: fixed;
+            top: 20px;
+            left: 0px;
+            padding: 0px;
+		 }
+		 ul#toolbar-filter li {
+		    list-style: none;
+		    text-align: center;
+			padding: 20px;
+			background-color: #3498db;
+		 }
+		 ul#toolbar-filter li a, ul#toolbar-filter li a:hover, ul#toolbar-filter li a:visited {
+		    color: #34495e;
+		    text-decoration: none;
+		 }
+		 ul#toolbar-filter li.disabled {
+			background-color: #bdc3c7;
+		 }
 	 </style>
 
   <script type="text/javascript">
+  var showAll = true;
   function showHide(nodeId, linkObj)
   {
     var subObj = document.getElementById('stepContainer' + nodeId);
@@ -105,12 +139,69 @@
       subObj.style.display='none';
     }
   }
+
+  function showAllScenarios() {
+    var toolbar = document.getElementById('toolbar-filter');
+    for (var i = 0; i < toolbar.children.length; i++) {
+      toolbar.children[i].className = '';
+    }
+
+    var trs = document.getElementsByTagName('tr');
+    for(var z = 0; z < trs.length; z++) {
+      trs[z].style.display = '';
+    }
+    showAll = true;
+  }
+
+  function toggleScenarios(name, linkObj) {
+    var links = document.getElementById('toolbar-filter').children;
+    var rows = document.getElementsByClassName('scenarioRow');
+    if (showAll) {
+        for (var i = 0; i < links.length; i++) {
+            links[i].className = 'disabled';
+        }
+
+        for (var i = 0; i < rows.length; i++) {
+            rows[i].style.display = 'none';
+        }
+
+    }
+    showAll = false;
+
+    if (linkObj.className == '') {
+        linkObj.className = 'disabled';
+        for (var i = 0; i < rows.length; i++) {
+          if (rows[i].classList.contains(name)) {
+                rows[i].style.display = 'none';
+          }
+        }
+        return;
+    }
+    if (linkObj.className == 'disabled') {
+        linkObj.className = '';
+        for (var i = 0; i < rows.length; i++) {
+          if (rows[i].classList.contains(name)) {
+                rows[i].style.display = 'table-row';
+          }
+        }
+        return;
+    }
+
+  }
   </script>
  </head>
 
  <body>
+   <ul id="toolbar-filter">
+     <li> <a href="#" title="Show all" onClick="showAllScenarios()">◯</a></li>
+     <li> <a href="#" title="Successful" onClick="toggleScenarios('scenarioSuccess', this.parentElement)"><strong>✔</strong> 5</a></li>
+     <li> <a href="#" title="Failed" onClick="toggleScenarios('scenarioFailed', this.parentElement)"><strong>✗</strong> 8</a></li>
+     <li> <a href="#" title="Skipped" onClick="toggleScenarios('scenarioSkipped', this.parentElement)"><strong>S</strong> 0</a></li>
+     <li> <a href="#" title="Incomplete" onClick="toggleScenarios('scenarioIncomplete', this.parentElement)"><strong>I</strong> 0</a></li>
+   </ul>
  <div class="layout">
- <h1>Codeception Results <small><span style="color: green">OK</span> (7.7s)</small></h1>
+ <h1>Codeception Results <small><span style="color: #e74c3c">FAILED</span> (44.4s)</small></h1>
+
 
 
 	 <table border="0" style="width: 100%;">
@@ -118,182 +209,927 @@
  <td>
      <h3>Acceptance Tests</h3>
  </td>
-</tr>   <tr>
+</tr>   <tr class="scenarioRow scenarioSuccess">
     <td>
-     <p class="scenarioSuccess" onclick="showHide('1', this)">[+] create  (02emarking/003MarioTestCept) (7.7s)</p>
+     <p class="scenarioSuccess" onclick="showHide('1', this)">[+] Login as admin (01Moodle/01LoginCept) <span style="color: #34495e; font-size: 70%;">1.47s</span></p>
     </td>
    </tr>
-   <tr>
+   <tr class="scenarioRow scenarioSuccess">
     <td>
      <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer1">
+
+
       <tr>
-       <td class="stepName">I am on page <span style="color: #732E81;">"/login/index.php"</span></td>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/login/index.php"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I fill field <span style="color: #732E81;">"username","admin"</span></td>
+       <td class="stepName ">I fill field <span style="color: #732E81">"username","admin"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I fill field <span style="color: #732E81;">"password","pepito.P0"</span></td>
+       <td class="stepName ">I fill field <span style="color: #732E81">"password","pepito.P0"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I click <span style="color: #732E81;">"loginbtn"</span></td>
+       <td class="stepName ">I click <span style="color: #732E81">"loginbtn"</span></td>
       </tr>
 
       <tr>
-       <td class="stepName">I see link <span style="color: #732E81;">"Admin User"</span></td>
+       <td class="stepName ">I see link <span style="color: #732E81">"Admin User"</span></td>
       </tr>
 
-      <tr>
-       <td class="stepName">I am on page <span style="color: #732E81;">"/"</span></td>
-      </tr>
 
-      <tr>
-       <td class="stepName">I see <span style="color: #732E81;">"Test Course Sec.1 2015"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I click <span style="color: #732E81;">"Test Course Sec.1 2015"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I grab from current url <span style="color: #732E81;">"/id=(\d+)/"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I am on page <span style="color: #732E81;">"course/modedit.php?add=emarking&type=&course=7&section=0&return=0&sr=0"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I fill field <span style="color: #732E81;">"name","tu mam32"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"totalpages","2"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"anonymous","0"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I check option <span style="color: #732E81;">"enableduedate"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"markingduedate[day]","01"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"markingduedate[month]","February"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"markingduedate[year]","2015"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"markingduedate[hour]","01"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"markingduedate[minute]","05"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I check option <span style="color: #732E81;">"regraderestrictdates"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"regradesopendate[day]","01"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"regradesopendate[month]","February"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"regradesopendate[year]","2015"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"regradesopendate[hour]","01"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"regradesopendate[minute]","05"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"regradesclosedate[day]","01"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"regradesclosedate[month]","February"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"regradesclosedate[year]","2015"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"regradesclosedate[hour]","01"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"regradesclosedate[minute]","10"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"peervisibility","1"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"gradecat","7"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"grademin","0"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"grade","7"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I check option <span style="color: #732E81;">"adjustslope"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I fill field <span style="color: #732E81;">"adjustslopegrade","1"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I fill field <span style="color: #732E81;">"adjustslopescore","1"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I fill field <span style="color: #732E81;">"cmidnumber",""</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I select option <span style="color: #732E81;">"groupmode","0"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I click <span style="color: #732E81;">"id_submitbutton2"</span></td>
-      </tr>
-
-      <tr>
-       <td class="stepName">I see link <span style="color: #732E81;">"tu mama"</span></td>
-      </tr>
-
+         
 
      </table>
     </td>
    </tr>
+
+
+   <tr class="scenarioRow scenarioSuccess">
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('2', this)">[+] Activate debuggin mode (01Moodle/02EnableDebugCept) <span style="color: #34495e; font-size: 70%;">3.57s</span></p>
+    </td>
+   </tr>
+   <tr class="scenarioRow scenarioSuccess">
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer2">
+
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/login/index.php"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"username","admin"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"password","pepito.P0"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"loginbtn"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I see link <span style="color: #732E81">"Admin User"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/admin/settings.php?section=debugging"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I select option <span style="color: #732E81">"#id_s__debug","DEVELOPER: extra Moodle debug messages for developers"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"Save changes"</span></td>
+      </tr>
+
+
+         
+
+     </table>
+    </td>
+   </tr>
+
+
+   <tr class="scenarioRow scenarioSuccess">
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('3', this)">[+] Create webcursos categories (01Moodle/03CreateCategoriesCept) <span style="color: #34495e; font-size: 70%;">4.37s</span></p>
+    </td>
+   </tr>
+   <tr class="scenarioRow scenarioSuccess">
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer3">
+
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/login/index.php"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"username","admin"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"password","pepito.P0"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"loginbtn"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I see link <span style="color: #732E81">"Admin User"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/course/editcategory.php?parent=1"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I select option <span style="color: #732E81">"parent","0"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"name","QA"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"submitbutton"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I see link <span style="color: #732E81">"QA"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/course/editcategory.php?parent=1"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I select option <span style="color: #732E81">"parent","QA"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"name","QA Invierno 2015"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"submitbutton"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I see link <span style="color: #732E81">"QA Invierno 2015"</span></td>
+      </tr>
+
+
+         
+
+     </table>
+    </td>
+   </tr>
+
+
+   <tr class="scenarioRow scenarioSuccess">
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('4', this)">[+] Create a 2 test courses (01Moodle/04CreateCoursesCept) <span style="color: #34495e; font-size: 70%;">5.29s</span></p>
+    </td>
+   </tr>
+   <tr class="scenarioRow scenarioSuccess">
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer4">
+
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/login/index.php"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"username","admin"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"password","pepito.P0"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"loginbtn"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I see link <span style="color: #732E81">"Admin User"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/course/edit.php?category=1"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"fullname","Test Course Sec.1 2015"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"shortname","123-S-WC101-1-1"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I select option <span style="color: #732E81">"category","QA / QA Invierno 2015"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"submitbutton"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/course/edit.php?category=1"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"fullname","Test Course Sec.2 2015"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"shortname","123-S-WC101-2-1"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I select option <span style="color: #732E81">"category","QA / QA Invierno 2015"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"submitbutton"</span></td>
+      </tr>
+
+
+         
+
+     </table>
+    </td>
+   </tr>
+
+
+   <tr class="scenarioRow scenarioSuccess">
+    <td>
+     <p class="scenarioSuccess" onclick="showHide('5', this)">[+] Config email (01Moodle/05SetEmailCept) <span style="color: #34495e; font-size: 70%;">3.51s</span></p>
+    </td>
+   </tr>
+   <tr class="scenarioRow scenarioSuccess">
+    <td>
+     <table border="0" width="100%" class="scenarioSuccess scenarioStepsTable" id="stepContainer5">
+
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/login/index.php"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"username","admin"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"password","pepito.P0"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"loginbtn"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I see link <span style="color: #732E81">"Admin User"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/admin/settings.php?section=messagesettingemail"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I see <span style="color: #732E81">"Email"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"s__smtphosts","mx1.uai.cl"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"Save changes"</span></td>
+      </tr>
+
+
+         
+
+     </table>
+    </td>
+   </tr>
+
+
+   <tr class="scenarioRow scenarioFailed">
+    <td>
+     <p class="scenarioFailed" onclick="showHide('6', this)">[+] Create users for emarking (02Emarking/01CreateSystemUserCept) <span style="color: #34495e; font-size: 70%;">3.19s</span></p>
+    </td>
+   </tr>
+   <tr class="scenarioRow scenarioFailed">
+    <td>
+     <table border="0" width="100%" class="scenarioFailed scenarioStepsTable" id="stepContainer6">
+
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/login/index.php"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"username","admin"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"password","pepito.P0"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"loginbtn"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I see link <span style="color: #732E81">"Admin User"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"user/editadvanced.php?id=-1"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"username","central_apuntes"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"newpassword","pepito.P0"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"firstname","Central"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"lastname","de Apuntes"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"email","centralapuntes@unmail.com"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"submitbutton"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"admin/user.php?perpage=1000"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName failedStep">I see link <span style="color: #732E81">"Central de Apuntes"</span></td>
+      </tr>
+
+
+         <tr >
+    <td class="error">
+        Element located either by name, CSS or XPath 'a' was not found.
+    </td>
+</tr>
+
+     </table>
+    </td>
+   </tr>
+
+
+   <tr class="scenarioRow scenarioFailed">
+    <td>
+     <p class="scenarioFailed" onclick="showHide('7', this)">[+] Create user roles for emarking and reserva de salas (02Emarking/02CreateRolCept) <span style="color: #34495e; font-size: 70%;">4.65s</span></p>
+    </td>
+   </tr>
+   <tr class="scenarioRow scenarioFailed">
+    <td>
+     <table border="0" width="100%" class="scenarioFailed scenarioStepsTable" id="stepContainer7">
+
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/login/index.php"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"username","admin"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"password","pepito.P0"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"loginbtn"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I see link <span style="color: #732E81">"Admin User"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"admin/roles/define.php?action=add&lang=en"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"submitbutton"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"shortname","central_apuntes"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"name","Central de Apuntes"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I check option <span style="color: #732E81">"#cl10"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I check option <span style="color: #732E81">"#cl30"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I check option <span style="color: #732E81">"#cl40"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I check option <span style="color: #732E81">"(//input[@name="mod/emarking:downloadexam"])[2]"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I check option <span style="color: #732E81">"(//input[@name="mod/emarking:receivenotification"])[2]"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I check option <span style="color: #732E81">"(//input[@name="mod/emarking:printordersview"])[2]"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"Create this role"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName failedStep">I click <span style="color: #732E81">"List all roles"</span></td>
+      </tr>
+
+
+         <tr >
+    <td class="error">
+        Link or Button by name or CSS or XPath 'List all roles' was not found.
+    </td>
+</tr>
+
+     </table>
+    </td>
+   </tr>
+
+
+   <tr class="scenarioRow scenarioFailed">
+    <td>
+     <p class="scenarioFailed" onclick="showHide('8', this)">[+] Assign central de apuntes system rol to "central de apuntes" user (02Emarking/03AssignSystemRolCept) <span style="color: #34495e; font-size: 70%;">2.87s</span></p>
+    </td>
+   </tr>
+   <tr class="scenarioRow scenarioFailed">
+    <td>
+     <table border="0" width="100%" class="scenarioFailed scenarioStepsTable" id="stepContainer8">
+
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/login/index.php"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"username","admin"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"password","pepito.P0"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"loginbtn"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I see link <span style="color: #732E81">"Admin User"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"admin/roles/assign.php?contextid=1&lang=en"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I see <span style="color: #732E81">"Assign roles in System"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I see link <span style="color: #732E81">"Central de Apuntes"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"Central de Apuntes"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"addselect_searchtext","CENTRAL DE APUNTES"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName failedStep">I select option <span style="color: #732E81">"addselect[]","CENTRAL DE APUNTES (central_apuntes@unmail.com)"</span></td>
+      </tr>
+
+
+         <tr >
+    <td class="error">
+        Input "addselect" cannot take "CENTRAL DE APUNTES (central_apuntes@unmail.com)" as a value (possible values: 7, 6, 2).
+    </td>
+</tr>
+
+     </table>
+    </td>
+   </tr>
+
+
+   <tr class="scenarioRow scenarioFailed">
+    <td>
+     <p class="scenarioFailed" onclick="showHide('9', this)">[+] Config sms (02Emarking/04ConfigureSmsCept) <span style="color: #34495e; font-size: 70%;">2.46s</span></p>
+    </td>
+   </tr>
+   <tr class="scenarioRow scenarioFailed">
+    <td>
+     <table border="0" width="100%" class="scenarioFailed scenarioStepsTable" id="stepContainer9">
+
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/login/index.php"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"username","admin"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"password","pepito.P0"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"loginbtn"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I see link <span style="color: #732E81">"Admin User"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/admin/settings.php?section=modsettingemarking"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"s__emarking_printsuccessinstructions","Mensaje de prueba"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I select option <span style="color: #732E81">"#id_s__emarking_minimumdaysbeforeprinting","2"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"s__emarking_parallelregex","[0-9]+-[SV]-([0-9A-Z]+)-.*"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"s__emarking_smsurl","http://api2.infobip.com/api/sendsms/xml"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"s__emarking_smsuser","UAI"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"s__emarking_smspassword","pepito.P0"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I check option <span style="color: #732E81">"#id_s__emarking_enablejustice"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I check option <span style="color: #732E81">"#id_s__emarking_justiceexperiment"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I check option <span style="color: #732E81">"#id_s__emarking_enableprinting"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"s__emarking_printername","Mensaje de prueba"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName failedStep">I click <span style="color: #732E81">"Save Changes"</span></td>
+      </tr>
+
+
+         <tr >
+    <td class="error">
+        Link or Button by name or CSS or XPath 'Save Changes' was not found.
+    </td>
+</tr>
+
+     </table>
+    </td>
+   </tr>
+
+
+   <tr class="scenarioRow scenarioFailed">
+    <td>
+     <p class="scenarioFailed" onclick="showHide('10', this)">[+] Create  (02Emarking/05CreateEmarkingActivityCept) <span style="color: #34495e; font-size: 70%;">2.42s</span></p>
+    </td>
+   </tr>
+   <tr class="scenarioRow scenarioFailed">
+    <td>
+     <table border="0" width="100%" class="scenarioFailed scenarioStepsTable" id="stepContainer10">
+
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/login/index.php"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"username","admin"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"password","pepito.P0"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"loginbtn"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I see link <span style="color: #732E81">"Admin User"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I see <span style="color: #732E81">"Test Course Sec.1 2015"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"Test Course Sec.1 2015"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I grab from current url <span style="color: #732E81">"/id=(\d+)/"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"course/modedit.php?add=emarking&type=&course=16&section=0&return=0&sr=0"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName failedStep">I fill field <span style="color: #732E81">"name","tu papi"</span></td>
+      </tr>
+
+
+         <tr >
+    <td class="error">
+        Form field by Label or CSS 'name' was not found.
+    </td>
+</tr>
+
+     </table>
+    </td>
+   </tr>
+
+
+   <tr class="scenarioRow scenarioFailed">
+    <td>
+     <p class="scenarioFailed" onclick="showHide('11', this)">[+] Create users for emarking and reserva de salas (03StudyRooms/01CreateSystemUserCept) <span style="color: #34495e; font-size: 70%;">3.29s</span></p>
+    </td>
+   </tr>
+   <tr class="scenarioRow scenarioFailed">
+    <td>
+     <table border="0" width="100%" class="scenarioFailed scenarioStepsTable" id="stepContainer11">
+
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/login/index.php"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"username","admin"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"password","pepito.P0"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"loginbtn"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I see link <span style="color: #732E81">"Admin User"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"user/editadvanced.php?id=-1"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"username","biblioteca"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"newpassword","pepito.P0"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"firstname","Admin"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"lastname","Biblioteca"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"email","adminbiblioteca@unmail.com"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"submitbutton"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"admin/user.php?perpage=1000"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName failedStep">I see link <span style="color: #732E81">"Admin Biblioteca"</span></td>
+      </tr>
+
+
+         <tr >
+    <td class="error">
+        Element located either by name, CSS or XPath 'a' was not found.
+    </td>
+</tr>
+
+     </table>
+    </td>
+   </tr>
+
+
+   <tr class="scenarioRow scenarioFailed">
+    <td>
+     <p class="scenarioFailed" onclick="showHide('12', this)">[+] Create user roles for emarking and reserva de salas (03StudyRooms/02CreateRolCept) <span style="color: #34495e; font-size: 70%;">4.61s</span></p>
+    </td>
+   </tr>
+   <tr class="scenarioRow scenarioFailed">
+    <td>
+     <table border="0" width="100%" class="scenarioFailed scenarioStepsTable" id="stepContainer12">
+
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/login/index.php"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"username","admin"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"password","pepito.P0"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"loginbtn"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I see link <span style="color: #732E81">"Admin User"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"admin/roles/define.php?action=add&lang=en"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"submitbutton"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"shortname","biblioteca"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"name","Biblioteca"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I check option <span style="color: #732E81">"#cl10"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I check option <span style="color: #732E81">"(//input[@name="local/reservasalas:advancesearch"])[2]"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I check option <span style="color: #732E81">"(//input[@name="local/reservasalas:blocking"])[2]"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I check option <span style="color: #732E81">"(//input[@name="local/reservasalas:bockinginfo"])[2]"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I check option <span style="color: #732E81">"(//input[@name="local/reservasalas:libreryrules"])[2]"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I check option <span style="color: #732E81">"(//input[@name="local/reservasalas:overwrite"])[2]"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"Create this role"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName failedStep">I click <span style="color: #732E81">"List all roles"</span></td>
+      </tr>
+
+
+         <tr >
+    <td class="error">
+        Link or Button by name or CSS or XPath 'List all roles' was not found.
+    </td>
+</tr>
+
+     </table>
+    </td>
+   </tr>
+
+
+   <tr class="scenarioRow scenarioFailed">
+    <td>
+     <p class="scenarioFailed" onclick="showHide('13', this)">[+] Assign biblioteca system rol to "administrador biblioteca" user (03StudyRooms/03AssignSystemRolCept) <span style="color: #34495e; font-size: 70%;">2.71s</span></p>
+    </td>
+   </tr>
+   <tr class="scenarioRow scenarioFailed">
+    <td>
+     <table border="0" width="100%" class="scenarioFailed scenarioStepsTable" id="stepContainer13">
+
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"/login/index.php"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"username","admin"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"password","pepito.P0"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"loginbtn"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I see link <span style="color: #732E81">"Admin User"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I am on page <span style="color: #732E81">"admin/roles/assign.php?contextid=1&lang=en"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I see <span style="color: #732E81">"Assign roles in System"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I see link <span style="color: #732E81">"Biblioteca"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I click <span style="color: #732E81">"Biblioteca"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName ">I fill field <span style="color: #732E81">"addselect_searchtext","ADMINISTRADOR BIBLIOTECA"</span></td>
+      </tr>
+
+      <tr>
+       <td class="stepName failedStep">I select option <span style="color: #732E81">"addselect[]","ADMINISTRADOR BIBLIOTECA (admin_biblioteca@unmail.com)"</span></td>
+      </tr>
+
+
+         <tr >
+    <td class="error">
+        Input "addselect" cannot take "ADMINISTRADOR BIBLIOTECA (admin_biblioteca@unmail.com)" as a value (possible values: 7, 6, 2).
+    </td>
+</tr>
+
+     </table>
+    </td>
+   </tr>
+
 
 
    <tr>
@@ -303,11 +1139,11 @@
       <table border="0">
        <tr>
         <td width="250" class="scenarioSuccess">Successful scenarios:</td>
-        <td class="scenarioSuccessValue"><strong>1</strong></td>
+        <td class="scenarioSuccessValue"><strong>5</strong></td>
        </tr>
        <tr>
         <td class="scenarioFailed">Failed scenarios:</td>
-        <td class="scenarioFailedValue"><strong>0</strong></td>
+        <td class="scenarioFailedValue"><strong>8</strong></td>
        </tr>
        <tr>
         <td class="scenarioSkipped">Skipped scenarios:</td>
