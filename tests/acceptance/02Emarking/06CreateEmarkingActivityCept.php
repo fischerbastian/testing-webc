@@ -10,7 +10,7 @@ $I->see('Test Course Sec.1 2015');
 $I->click('Test Course Sec.1 2015');
 $courseid = $I->grabFromCurrentUrl('/id=(\d+)/'); 
 
-$I->amOnPage('course/modedit.php?add=emarking&type=&course='.$courseid.'&section=0&return=0&sr=0');
+$I->amOnPage('/course/modedit.php?add=emarking&type=&course='.$courseid.'&section=0&return=0&sr=0');
 
 // General
 $I->fillField('name','tu papi');
@@ -46,7 +46,7 @@ $I->selectOption('regradesclosedate[minute]','10');
 $I->selectOption('peervisibility','1');
 
 //Grade
-$I->selectOption('gradecat','7');
+$I->selectOption('gradecat','1');
 $I->selectOption('grademin','0');
 $I->selectOption('grade','7');
 
