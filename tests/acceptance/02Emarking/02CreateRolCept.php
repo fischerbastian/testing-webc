@@ -5,7 +5,7 @@ $I = new AcceptanceTester($scenario);
 $I->wantTo('Create user roles for emarking and reserva de salas');
 $I->login('admin', 'pepito.P0', 'Admin User');
 
-$I->amOnPage('admin/roles/define.php?action=add');
+$I->amOnPage('/admin/roles/define.php?action=add');
 $I->click('submitbutton');
 
 $I->fillField('shortname', 'ayudante');
