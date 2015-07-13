@@ -146,4 +146,21 @@ class AcceptanceTester extends \Codeception\Actor
     	$activityId = $this->grabFromCurrentUrl('/id=(\d+)/');
     	return $activityId;
     }
+    
+    public function IdEmarkingRubric($activityId){
+    	$this->amOnPage('/mod/emarking/view.php?id='.$activityId);
+    	
+    	$contextid = $this->grabValueFrom(['css' => 'input[type=hidden][name=contextid]']);
+    	$component = $this->grabValueFrom(['css' => 'input[type=hidden][name=component]']);
+    	$area = $this->grabValueFrom(['css' => 'input[type=hidden][name=area]']);
+    	$sesskey = $this->grabValueFrom(['css' => 'input[type=hidden][name=sesskey]']);
+    	
+    	$this->amOnPage('/grade/grading/manage.php?id='.$activityId.'&contextid='.$contextid.'&component='.$component.'&area='.$area.'&sesskey='.$sesskey);
+    	    	
+    	$this->click('Define new grading form from scratch');
+    	$rubricId = $this->grabFromCurrentUrl('/areaid=(\d+)/');
+    	return $rubricId;
+    }
+    
 }
+
