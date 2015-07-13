@@ -33,7 +33,6 @@ $I->createEmarkingActivity($info= array(
 		'regradesclosedateminute' => '10',
 		'peervisibility' => 'Yes',
 		
-		'gradecat' => '1',
 		'grademin' => '0',
 		'grade' => '7',
 
