@@ -3,7 +3,7 @@ $I = new AcceptanceTester($scenario);
 
 $I->wantTo('Create an Emarking Activity');
 $I->login('admin', 'pepito.P0','Admin User');
-$activityId = $I->IdEmarkingActivity('Test Course Sec.1 2015', 'tu papi');
+$activityId = $I->IdEmarkingActivity('Test Course Sec.1 2015', 'test1');
 
 $I->amOnPage('/');
 $I->see('Test Course Sec.1 2015');
@@ -33,7 +33,15 @@ $I->fillField('rubric[criteria][NEWID1][levels][NEWID0][definition]', 'Nada');
 $I->fillField('rubric[criteria][NEWID1][levels][NEWID1][definition]', 'Casi');
 $I->fillField('rubric[criteria][NEWID1][levels][NEWID2][definition]', 'Todo');
 
-$I->click('saverubric');
+$I->unCheckOption('rubric[options][alwaysshowdefinition]');
+$I->unCheckOption('rubric[options][showdescriptionteacher]');
+$I->unCheckOption('rubric[options][showdescriptionstudent]');
+$I->unCheckOption('rubric[options][showscoreteacher]');
+$I->unCheckOption('rubric[options][showscorestudent]');
+$I->unCheckOption('rubric[options][enableremarks]');
+$I->unCheckOption('rubric[options][showremarksstudent]');
 
+
+$I->click('saverubricdraft');
 
 ?>
