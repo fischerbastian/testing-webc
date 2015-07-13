@@ -114,7 +114,6 @@ class AcceptanceTester extends \Codeception\Actor
     	
     	
     	//Grade
-    	$this->selectOption('gradecat',$info['gradecat']);
     	$this->selectOption('grademin',$info['grademin']);
     	$this->selectOption('grade',$info['grade']);
     	
@@ -135,5 +134,16 @@ class AcceptanceTester extends \Codeception\Actor
     	$this->seeLink($info['name']);
     	
     }
+
+    public function IdEmarkingActivity($curse, $activity){
     
+    	$this->see($curse);    	
+    	$this->click($curse);
+    	
+    	$this->see($activity);
+    	$this->click($activity);
+    	
+    	$activityId = $this->grabFromCurrentUrl('/id=(\d+)/');
+    	return $activityId;
+    }
 }
