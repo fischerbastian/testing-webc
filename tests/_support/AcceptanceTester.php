@@ -63,10 +63,6 @@ class AcceptanceTester extends \Codeception\Actor
     }
     public function createEmarkingActivity($info){
     	
-    	$this->amOnPage('/login/index.php');
-    	$this->fillField('username', 'admin');
-    	$this->fillField('password', 'pepito.P0');
-    	$this->click('loginbtn');
     	
     	$this->see($info['curse']);    	
     	$this->click($info['curse']);

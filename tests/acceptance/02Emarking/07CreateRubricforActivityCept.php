@@ -10,18 +10,18 @@ $I->click('Test Course Sec.1 2015');
 
 //falta hacer grabber para id de actividad
 $courseid = $I->grabFromCurrentUrl('/id=(\d+)/');
-$I->amOnPage('/mod/emarking/view.php?id=14');
+$I->amOnPage('/mod/emarking/view.php?id=15');
 
 $contextid = $I->grabValueFrom(['css' => 'input[type=hidden][name=contextid]']);
 $component = $I->grabValueFrom(['css' => 'input[type=hidden][name=component]']);
 $area = $I->grabValueFrom(['css' => 'input[type=hidden][name=area]']);
 $sesskey = $I->grabValueFrom(['css' => 'input[type=hidden][name=sesskey]']);
 
-$I->amOnPage('/grade/grading/manage.php?id=14&contextid='.$contextid.'&component='.$component.'&area='.$area.'&sesskey='.$sesskey);
+$I->amOnPage('/grade/grading/manage.php?id=15&contextid='.$contextid.'&component='.$component.'&area='.$area.'&sesskey='.$sesskey);
 
 $I->see('Define new grading form from scratch');
 
-$I->amOnPage('/grade/grading/form/rubric/edit.php?areaid=1');
+$I->amOnPage('/grade/grading/form/rubric/edit.php?areaid=2');
 
 $I->fillField('name', 'Rubrica de prueba 1');
 $I->fillField('rubric[criteria][NEWID1][description]', 'Criterio 1');

@@ -4,6 +4,9 @@ $I = new AcceptanceTester($scenario);
 
 $I->wantTo('Create a Rubirc for a Emarking activiy');
 
+$I->login('admin','pepito.P0','Admin User');
+$I->amOnPage('/');
+
 $I->createEmarkingActivity($info= array(
 		'name' => 'Test1',
 		'curse' => 'Test Course Sec.1 2015',
@@ -30,7 +33,7 @@ $I->createEmarkingActivity($info= array(
 		'regradesclosedateminute' => '10',
 		'peervisibility' => 'Yes',
 		
-		'gradecat' => '2',
+		'gradecat' => '1',
 		'grademin' => '0',
 		'grade' => '7',
 
