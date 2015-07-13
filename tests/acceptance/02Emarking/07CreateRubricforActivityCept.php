@@ -1,7 +1,7 @@
 <?php 
 $I = new AcceptanceTester($scenario);
 
-$I->wantTo('Create ');
+$I->wantTo('Create an Emarking Activity');
 $I->login('admin', 'pepito.P0','Admin User');
 
 $I->amOnPage('/');
