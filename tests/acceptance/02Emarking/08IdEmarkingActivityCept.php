@@ -1,7 +1,7 @@
 <?php
 $I = new AcceptanceTester($scenario);
 
-$I->wantTo('Create a Rubirc for a Emarking activiy');
+$I->wantTo('Grab id from activity');
 
 $I->login('admin','pepito.P0','Admin User');
 

@@ -3,21 +3,22 @@ $I = new AcceptanceTester($scenario);
 
 $I->wantTo('Create an Emarking Activity');
 $I->login('admin', 'pepito.P0','Admin User');
+$activityId = $I->IdEmarkingActivity('Test Course Sec.1 2015', 'tu papi');
 
 $I->amOnPage('/');
 $I->see('Test Course Sec.1 2015');
 $I->click('Test Course Sec.1 2015');
 
 //falta hacer grabber para id de actividad
-$courseid = $I->grabFromCurrentUrl('/id=(\d+)/');
-$I->amOnPage('/mod/emarking/view.php?id=15');
+
+$I->amOnPage('/mod/emarking/view.php?id='.$activityId);
 
 $contextid = $I->grabValueFrom(['css' => 'input[type=hidden][name=contextid]']);
 $component = $I->grabValueFrom(['css' => 'input[type=hidden][name=component]']);
 $area = $I->grabValueFrom(['css' => 'input[type=hidden][name=area]']);
 $sesskey = $I->grabValueFrom(['css' => 'input[type=hidden][name=sesskey]']);
 
-$I->amOnPage('/grade/grading/manage.php?id=15&contextid='.$contextid.'&component='.$component.'&area='.$area.'&sesskey='.$sesskey);
+$I->amOnPage('/grade/grading/manage.php?id='.$activityId.'&contextid='.$contextid.'&component='.$component.'&area='.$area.'&sesskey='.$sesskey);
 
 $I->see('Define new grading form from scratch');
 
