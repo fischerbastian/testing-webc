@@ -4,7 +4,7 @@ $I = new AcceptanceTester($scenario);
 
 
 $I->createEmarkingActivity($info= array(
-		'name'=>'Tu mami bn bellaka',
+		'name'=>'Test1',
 		'curse'=>'Test Course Sec.1 2015',
 		'totalpages'=>'2',
 		'anonymous'=>'0',
