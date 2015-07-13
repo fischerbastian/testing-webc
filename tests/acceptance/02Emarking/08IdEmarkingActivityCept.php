@@ -1,7 +1,7 @@
 <?php
 $I = new AcceptanceTester($scenario);
 
-$I->wantTo('Rescatar ID de una actividad');
+$I->wantTo('Grab id from activity');
 
 $I->login('admin','pepito.P0','Admin User');
 
