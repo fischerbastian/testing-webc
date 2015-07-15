@@ -185,7 +185,7 @@ class AcceptanceTester extends \Codeception\Actor
     			$this->fillField('rubric[criteria][NEWID1][levels][NEWID'.$countCriterionLevels.'][definition]', $info['critinfo1.'.$criterianLevelNumber]);
     			$this->fillField('rubric[criteria][NEWID1][levels][NEWID'.$countCriterionLevels.'][score]', $info['critval1.'.$criterianLevelNumber]);
     		
-    		    $countCriterionLevels = $countCriterionLevels+1;
+    		    $countCriterionLevels++;
     	}
     	
     	// $info['cantPreguntas'] start on 2 because we had done the first criterian before
@@ -211,7 +211,7 @@ class AcceptanceTester extends \Codeception\Actor
     			    $this->fillField('rubric[criteria][NEWID'.$criterianNumber.'][levels][NEWID'.$countCriterionLevels.'][definition]', $info['critinfo'.$criterianNumber.'.'.$criterianLevelNumber]);
     				$this->fillField('rubric[criteria][NEWID'.$criterianNumber.'][levels][NEWID'.$countCriterionLevels.'][score]', $info['critval'.$criterianNumber.'.'.$criterianLevelNumber]);
     			
-    			$countCriterionLevels = $countCriterionLevels+1;
+    			$countCriterionLevels++;
     		}
     	}
     	}
