@@ -162,5 +162,60 @@ class AcceptanceTester extends \Codeception\Actor
     	return $rubricId;
     }
     
+    public function autofillRubric($info){
+    	$this->fillField('name', $info['name']);
+		
+    	$criterianNumber = 0;
+    	$quantityLevelsBefore = 0;
+		$criterianLevelNumber = 0;
+		
+		// count of numbers of levels on criterion X
+    	$countCriterionLevels = 0;
+    	
+    	
+    	$this->fillField('rubric[criteria][NEWID1][description]', $info['crit1']);
+    	
+    	for($criterianLevelNumber = 1; $criterianLevelNumber <= $info['quantLvls1']; $criterianLevelNumber++){
+    		if($countCriterionLevels > 2){
+    			
+    			$this->click('rubric[criteria][NEWID1][levels][addlevel]');
+    			
+    		}
+    		     		
+    			$this->fillField('rubric[criteria][NEWID1][levels][NEWID'.$countCriterionLevels.'][definition]', $info['critinfo1.'.$criterianLevelNumber]);
+    			$this->fillField('rubric[criteria][NEWID1][levels][NEWID'.$countCriterionLevels.'][score]', $info['critval1.'.$criterianLevelNumber]);
+    		
+    		    $countCriterionLevels = $countCriterionLevels+1;
+    	}
+    	
+    	// $info['cantPreguntas'] start on 2 because we had done the first criterian before
+    	if($info['cantPreguntas'] >= 2){ 
+    	for ($criterianNumber = 2; $criterianNumber <= $info['cantPreguntas']; $criterianNumber++){
+    		
+    		$countCriterionLevels = 0;
+    		
+    		$this->click('rubric[criteria][addcriterion]');
+    		$this->fillField('rubric[criteria][NEWID'.$criterianNumber.'][description]', $info['crit'.$criterianNumber]);
+    		
+    		
+    		for($criterianLevelNumber = 1; $criterianLevelNumber <= $info['quantLvls'.$criterianNumber]; $criterianLevelNumber++){
+    			
+    			$quantityLevelsBefore = $criterianNumber-1;
+    			
+    			// we had plused 1 at $countCriterionLevels because the difference between
+    			// the start numbers of $countCriterionLevels (0) and $info['quantLvls'.$quantityLevelsBefore] (1)
+    			if($countCriterionLevels + 1 > $info['quantLvls'.$quantityLevelsBefore]){
+    				$this->click('rubric[criteria][NEWID'.$criterianNumber.'][levels][addlevel]');
+    			}
+    			
+    			    $this->fillField('rubric[criteria][NEWID'.$criterianNumber.'][levels][NEWID'.$countCriterionLevels.'][definition]', $info['critinfo'.$criterianNumber.'.'.$criterianLevelNumber]);
+    				$this->fillField('rubric[criteria][NEWID'.$criterianNumber.'][levels][NEWID'.$countCriterionLevels.'][score]', $info['critval'.$criterianNumber.'.'.$criterianLevelNumber]);
+    			
+    			$countCriterionLevels = $countCriterionLevels+1;
+    		}
+    	}
+    	}
+    	$this->click('saverubricdraft');
+    }
 }
 
