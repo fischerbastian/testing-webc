@@ -81,8 +81,8 @@ class AcceptanceTester extends \Codeception\Actor
     	// falta custom marks
     	
     	// Dates and Regrades
-    	if ($info['enableduedate'])
-    	{
+    	if ($info['enableduedate']){
+    		
     	$this->checkOption('#id_enableduedate');
     	
     	$this->selectOption('markingduedate[day]',$info['markingduedateday']);
@@ -92,8 +92,8 @@ class AcceptanceTester extends \Codeception\Actor
     	$this->selectOption('markingduedate[minute]',$info['markingduedateminute']);
     	}
     	
-    	if ($info['regraderestrictdates'])
-    	{
+    	if ($info['regraderestrictdates']){
+    		
     	$this->checkOption('#id_regraderestrictdates');
     	
     	$this->selectOption('regradesopendate[day]',$info['regradesopendateday']);
@@ -117,8 +117,8 @@ class AcceptanceTester extends \Codeception\Actor
     	$this->selectOption('grademin',$info['grademin']);
     	$this->selectOption('grade',$info['grade']);
     	
-    	if($info['adjustslope'])
-    	{
+    	if($info['adjustslope']){
+    		
     	$this->checkOption('adjustslope');
     	
     	$this->fillField('adjustslopegrade',$info['adjustslopegrade']);
@@ -145,9 +145,11 @@ class AcceptanceTester extends \Codeception\Actor
     	
     	$activityId = $this->grabFromCurrentUrl('/id=(\d+)/');
     	return $activityId;
+    	
     }
     
     public function IdEmarkingRubric($activityId){
+    	
     	$this->amOnPage('/mod/emarking/view.php?id='.$activityId);
     	
     	$contextid = $this->grabValueFrom(['css' => 'input[type=hidden][name=contextid]']);
@@ -160,9 +162,11 @@ class AcceptanceTester extends \Codeception\Actor
     	$this->click('Define new grading form from scratch');
     	$rubricId = $this->grabFromCurrentUrl('/areaid=(\d+)/');
     	return $rubricId;
+    	
     }
     
     public function autofillRubric($info){
+    	
     	$this->fillField('name', $info['name']);
 		
     	$criterianNumber = 0;
@@ -190,7 +194,8 @@ class AcceptanceTester extends \Codeception\Actor
     	
     	// $info['cantPreguntas'] start on 2 because we had done the first criterian before
     	if($info['cantPreguntas'] >= 2){ 
-    	for ($criterianNumber = 2; $criterianNumber <= $info['cantPreguntas']; $criterianNumber++){
+    		
+    		for ($criterianNumber = 2; $criterianNumber <= $info['cantPreguntas']; $criterianNumber++){
     		
     		$countCriterionLevels = 0;
     		
