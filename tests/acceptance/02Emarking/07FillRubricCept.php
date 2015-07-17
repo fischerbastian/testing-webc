@@ -12,6 +12,7 @@ $rubricId = $I->IdEmarkingRubric($activityId);
 $I->amOnPage('/grade/grading/form/rubric/edit.php?areaid='.$rubricId);
 
 $I->autofillRubric($info = array(
+		'draft' => true,
 		'name' => 'Rubric test',
 		'cantPreguntas' => 2,
 		
