@@ -1,22 +1,29 @@
 <?php
+ 
 $I = new AcceptanceTester($scenario);
 
-$I->wantTo('Fill rubric criterions');
+$I->wantTo('Publish rubric');
 
 $I->login('admin','pepito.P0','Admin User');
 
-$activityId = $I->IdEmarkingActivity('Test Course Sec.1 2015', 'Actividad rikolina2');
+$activityId = $I->IdEmarkingActivity('Test Course Sec.1 2015', 'test2');
 
 $rubricId = $I->IdEmarkingRubric($activityId);
 
 $I->amOnPage('/grade/grading/form/rubric/edit.php?areaid='.$rubricId);
 
+$numberOfLvls=3; // It must be 3 or more
+
+$rubricName= 'Test rubric';
+
 $I->autofillRubric($info = array(
-		'name' => 'Rubric test',
-		'cantPreguntas' => 2,
 		
+		'draft' => false,
+		'name' => $rubricName,
+		'cantPreguntas' => 2,
+
 		'crit1' => 'informacion criterio 1',
-		'quantLvls1' => 5,
+		'quantLvls1' => $numberOfLvls,
 		'critinfo1.1' => 'informacion nivel 1 criterio 1',
 		'critval1.1' => '1',
 		'critinfo1.2' => 'informacion nivel 2 criterio 1',
@@ -37,9 +44,9 @@ $I->autofillRubric($info = array(
 		'critval1.9' => '9',
 		'critinfo1.10' => 'informacion nivel 10 criterio 1',
 		'critval1.10' => '10',
-		
+
 		'crit2' => 'informacion criterio 2',
-		'quantLvls2' => 4,
+		'quantLvls2' => $numberOfLvls,
 		'critinfo2.1' => 'informacion nivel 1 criterio 2',
 		'critval2.1' => '1',
 		'critinfo2.2' => 'informacion nivel 2 criterio 2',
@@ -60,6 +67,13 @@ $I->autofillRubric($info = array(
 		'critval2.9' => '9',
 		'critinfo2.10' => 'informacion nivel 10 criterio 2',
 		'critval2.10' => '10',
-						           )
-					);
+                                  )
+                     );
+
+$I->publishRubric($rubricId, $rubricName);
+
 ?>
+
+
+
+

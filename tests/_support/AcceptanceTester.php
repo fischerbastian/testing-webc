@@ -220,7 +220,48 @@ class AcceptanceTester extends \Codeception\Actor
     		}
     	}
     	}
+    	
+    	if ($info['draft']){
     	$this->click('saverubricdraft');
+    	}
+    	else{
+    	$this->click('saverubric');	
+    	}
     }
+        
+    public function publishRubric($rubricId, $name){
+    	 
+    	$this->amOnPage('/grade/grading/manage.php?areaid='.$rubricId);
+    	 
+    	$this->see('Publish the form as a new template');
+    	$this->click('Publish the form as a new template');
+    	 
+    	$this->see($name);
+    	 
+    	$this->see('Continue');
+    	$this->click('Continue');
+    	 
+    }
+    
+    public function useExistingRubric($name, $rubricId){
+    	
+    	$this->amOnPage('/grade/grading/manage.php?areaid='.$rubricId);
+    	
+    	$this->see('Create new grading form from a template');
+    	$this->click('Create new grading form from a template');
+    	
+    	$this->see($name);
+    	
+    	// We used the pick=40 because we couldn't grab the corresponding pick from 
+    	// some X rubric, so we call a standar published rubric that have the value 40 on pick
+    	$this->amOnPage('/grade/grading/pick.php?targetid='.$rubricId.'&pick=40');
+    	
+    	$this->see($name);
+    	$this->click('Continue');
+    	
+    	$this->see($name);
+    	
+    }
+    
 }
 
