@@ -8,7 +8,7 @@ $I->login('admin','pepito.P0','Admin User');
 $I->amOnPage('/');
 
 $I->createEmarkingActivity($info= array(
-		'name' => 'Test1',
+		'name' => 'Actividad rikolina2',
 		'curse' => 'Test Course Sec.1 2015',
 		'totalpages' => '2',
 		'anonymous' => '0',
