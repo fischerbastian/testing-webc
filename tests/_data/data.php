@@ -1,4 +1,7 @@
 <?php
+
+ini_set('memory_limit', '512M');
+
 /**
  * Generate all the possible combinations among a set of nested arrays.
  *
@@ -8,12 +11,12 @@
  * @param mixed $val   The value to append (used internally).
  * @param int   $i     The key index (used internally).
  */
+
 function generate_combinations(array $data, array &$all = array(), array $group = array(), $value = null, $i = 0) {
 	$keys = array_keys ( $data );
 	if (isset ( $value ) === true) {
 		array_push ( $group, $value );
 	}
-
 	if ($i >= count ( $data )) {
 		array_push ( $all, $group );
 	} else {
@@ -23,7 +26,6 @@ function generate_combinations(array $data, array &$all = array(), array $group 
 			generate_combinations ( $data, $all, $group, $val, $i + 1 );
 		}
 	}
-
 	return $all;
 }
 
@@ -31,14 +33,13 @@ function generate_combinations(array $data, array &$all = array(), array $group 
 
 $marking_type = array (
 		'Normal'
-)
 // 'Entrenamiento correctores',
 // 'Entrenamiento estudiantes'
-;
+);
 
 // Marking
 $total_pages = array ();
-for($pages = 0; $pages <= 100; $pages ++) {
+for($pages = 1; $pages <= 3; $pages ++) {
 	$total_pages [$pages] = $pages;
 }
 
@@ -51,7 +52,7 @@ $anonymous = array (
 
 $custom_marks = array (
 		'empty',
-		'Sp#Spelling error'
+		//'Sp#Spelling error'
 );
 
 // Dates & Regrade
@@ -75,6 +76,23 @@ $grading_method = array(
 		'Rubric'
 );
 
+$grade_category = array(
+		'Uncategorised'
+);
+
+$minimum_grade = array();
+$maximum_grade = array();
+
+for($grade = 0; $grade <= 2; $grade ++) {
+	$minimum_grade[$grade] = $grade;
+	$maximum_grade[$grade] = $grade;
+}
+
+$adjust_grade_slope = array(
+		'Yes',
+		'No'
+);
+
 $header = array(
 		'#',
 		'Activity name',
@@ -92,7 +110,6 @@ $header = array(
 		'Adjust grade slope'
 );
 
-
 $info = array (
 		$marking_type,
 		$total_pages,
@@ -101,8 +118,23 @@ $info = array (
 		$enable_due_date,
 		$restrict_regrading_date,
 		$students_can_view_peers_exams,
-		$grading_method
+		$grading_method,
+		$grade_category,
+		$minimum_grade,
+		$maximum_grade,
+		$adjust_grade_slope
 );
 
 $combos = generate_combinations ( $info );
+
+$new_combos = array();
+for ($i = 0; $i < count($combos); $i++) {
+	for ($j = 0; $j < count($combos[$i]); $j++) {
+		// If Minimum is greater than maximum grade, we take off that minimum grade from the array
+		if ($combos[$i][10] > $combos[$i][9]) {
+			$new_combos[$i][$j] = $combos[$i][$j];
+		}		
+	}
+}
+
 ?>
