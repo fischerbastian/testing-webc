@@ -6,7 +6,7 @@ $I->wantTo('Fill rubric criterions whit a standar level ');
 
 $I->login('admin','pepito.P0','Admin User');
 
-$activityId = $I->IdEmarkingActivity('Test Course Sec.1 2015', 'Actividad rikolina2');
+$activityId = $I->IdEmarkingActivity('Test Course Sec.1 2015', 'test1');
 
 $rubricId = $I->IdEmarkingRubric($activityId);
 

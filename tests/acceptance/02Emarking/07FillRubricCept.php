@@ -5,7 +5,7 @@ $I->wantTo('Fill rubric criterions');
 
 $I->login('admin','pepito.P0','Admin User');
 
-$activityId = $I->IdEmarkingActivity('Test Course Sec.1 2015', 'Actividad rikolina2');
+$activityId = $I->IdEmarkingActivity('Test Course Sec.1 2015', 'test7');
 
 $rubricId = $I->IdEmarkingRubric($activityId);
 
