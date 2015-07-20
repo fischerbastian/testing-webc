@@ -158,8 +158,10 @@ class AcceptanceTester extends \Codeception\Actor
     	$sesskey = $this->grabValueFrom(['css' => 'input[type=hidden][name=sesskey]']);
     	
     	$this->amOnPage('/grade/grading/manage.php?id='.$activityId.'&contextid='.$contextid.'&component='.$component.'&area='.$area.'&sesskey='.$sesskey);
-    	    	
-    	$this->click('Define new grading form from scratch');
+
+    	// Because we couldn't click the SRC about the picture associated,
+    	// we decided to use the xpath ubication
+    	$this->click('//section[@id="region-main"]/div/div[2]/a');
     	$rubricId = $this->grabFromCurrentUrl('/areaid=(\d+)/');
     	return $rubricId;
     	
@@ -220,7 +222,46 @@ class AcceptanceTester extends \Codeception\Actor
     		}
     	}
     	}
+    	
+    	if ($info['draft']){
     	$this->click('saverubricdraft');
+    	}
+    	else{
+    	$this->click('saverubric');	
+    	}
     }
+        
+    public function publishRubric($rubricId, $name){
+    	 
+    	$this->amOnPage('/grade/grading/manage.php?areaid='.$rubricId);
+    	 
+    	// Because we couldn't click the SRC about the picture associated,
+    	// we decided to use the xpath ubication
+      	$this->click('//section[@id="region-main"]/div/div[2]/a[3]'); 
+    	 
+    	$this->see($name);
+    	 
+    	$this->see('Continue');
+    	$this->click('Continue');
+    	 
+    }
+    
+    public function useExistingRubric($name, $rubricId){
+    	   	
+    	$this->amOnPage('grade/grading/pick.php?targetid='.$rubricId);
+    	
+    	$this->see($name);
+    	
+    	// We used the pick=4 because we couldn't grab the corresponding pick from 
+    	// some X rubric, so we call a standar published rubric that have the value 4 on pick
+    	$this->amOnPage('/grade/grading/pick.php?targetid='.$rubricId.'&pick=4');
+    	
+    	$this->see($name);
+    	$this->click('Continue');
+    	
+    	$this->see($name);
+    	
+    }
+    
 }
 
