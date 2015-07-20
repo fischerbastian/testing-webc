@@ -75,6 +75,24 @@ $grading_method = array(
 		'Rubric'
 );
 
+$header = array(
+		'#',
+		'Activity name',
+		'Marking type',
+		'Total pages',
+		'Marker type',
+		'Custom marks',
+		'Enable due date',
+		'Restrict regrading date',
+		'Students can view peers exams',
+		'Grading method',
+		'Grade category',
+		'Minimum grade',
+		'Maximum grade',
+		'Adjust grade slope'
+);
+
+
 $info = array (
 		$marking_type,
 		$total_pages,

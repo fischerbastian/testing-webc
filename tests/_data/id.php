@@ -1,5 +1,4 @@
 <?php
-
 require_once 'data.php';
 
 ?>
@@ -16,43 +15,35 @@ require_once 'data.php';
 		<h1>Use cases Emarking activity</h1>
 		<br>
 	</div>
-
 	<div class="container">
 		<table class="table table-bordered">
 			<tr class="info">
-				<th>#</th>
-				<th>Activity name</th>
-				<th>Marking type</th>
-				<th>Total Pages</th>
-				<th>Marker type</th>
-				<th>Custom marks</th>
-				<th>Enable due date</th>
-				<th>Restrict regrading date</th>
-				<th>Students view peers' exams</th>
-				<th>Grading method</th>
-				<th>Grade category</th>
-				<th>Minimum grade</th>
-				<th>Maximum grae</th>
-				<th>Adjust grade slope</th>
-			</tr>
-		<?php
-		for($i = 0; $i < count ( $combos ); $i ++) {
-			
-			echo '<tr>';
-			echo '<td>' . ($i + 1) . '</td>';
-			echo '<td>Activity #' . ($i + 1) . '</td>';
-			for($j = 0; $j < count ( $combos [$i] ); $j ++) {
-				
-				echo '<td>';
-				echo $combos [$i] [$j];
-				echo '</td>';
+			<?php
+			foreach ( $header as $headers ) {
+				echo '<th>' . $headers . '</th>';
 			}
 			echo '</tr>';
-		}
+			
+			$id = 1;
+			foreach ( $combos as $combo ) {
+				echo '<tr>';
+				echo '<td>' . $id . '</td>';
+				echo '<td>Activity #' . $id . '</td>';
+				foreach ( $combo as $data ) {
+					echo '<td>' . $data . '</td>';
+				}
+				echo '</tr>';
+				$id ++;
+			}
+			?>
 		
-		?>
-	</table>
+		
+		</table>
 	</div>
-
+	<footer>
+		<div class="container">
+			<p class="text-muted">&copy<?=date('Y')?> Bastián Fischer G, All Right Reserved</p>
+		</div>
+	</footer>
 </body>
 </html>
