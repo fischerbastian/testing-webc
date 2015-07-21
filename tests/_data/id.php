@@ -7,35 +7,23 @@ require_once 'data.php';
 <head>
 <meta charset="utf-8" />
 <title>Use cases Emarking Activity</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <style>
 </style>
 </head>
 <body>
-	<div class="container-fluid">
+	<div>
 		<h1>Use cases Emarking Activity</h1>
-		<br>
 	</div>
-	<div class="container">
-		<table class="table table-bordered table-condensed">
-			<tr class="info">
+	<div>
 			<?php
-			foreach ( $header as $headers ) {
-				echo '<th class="text-center">' . $headers . '</th>';
-			}
-			echo '</tr>';
-			
 			$id = 1;
 			foreach ( $new_combos as $combo ) {
-				echo '<tr>';
-				echo '<td class="text-center">' . $id . '</td>';
-				echo '<td class="text-center">Activity #' . $id . '</td>';
+				echo $id . ";Activity #" . $id;
 				foreach ( $combo as $data ) {
-					echo '<td class="text-center">' . $data . '</td>';
+					echo ";" . $data;
 				}
-				echo '</tr>';
 				$id ++;
+				echo "<br>";
 			}
 			
 			/**
@@ -45,11 +33,12 @@ require_once 'data.php';
 			 */
 			
 			?>	
+			
 		</table>
 	</div>
 	<footer>
-		<div class="container">
-			<p class="text-muted">&copy<?=date('Y')?> Bastián Fischer G, All Right Reserved</p>
+		<div>
+			<p></p>
 		</div>
 	</footer>
 </body>
