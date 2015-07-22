@@ -229,6 +229,60 @@ class AcceptanceTester extends \Codeception\Actor
     	else{
     	$this->click('saverubric');	
     	}
+    	
+    	$this->see($info['name']);
+    	
+    	///////////////////////////
+    	
+    	$row=1;
+    	$column=1;
+    	
+    	$this->see($info['crit'.$row], '//td');
+    	 
+    	$this->see( $info['critinfo'.$row.'.'.$column],'//td/div/div');
+    	$this->see($info['critval'.$row.'.'.$column], '//td/div/div[2]');
+    		
+    	for($column = 2; $column <= $info['quantLvls'.$row]; $column++){
+    		 
+    		$this->see($info['critinfo'.$row.'.'.$column],'//tr/td['.$column.']/div/div');
+    		$this->see($info['critval'.$row.'.'.$column], '//tr/td['.$column.']/div/div[2]');
+    	
+    	}
+    	
+    	for($row = 2; $row <= $info['cantPreguntas']; $row++){
+    		
+    			$column=1;
+    		
+    		   	$this->see($info['crit'.$row]);
+    		
+    		  	$this->see($info['critinfo'.$row.'.'.$column]);
+    		   	$this->see($info['critval'.$row.'.'.$column]);
+    		
+    			for($column = 2; $column <= $info['quantLvls'.$row]; $column++){
+    		
+    				$this->see($info['critinfo'.$row.'.'.$column]);
+    				$this->see($info['critval'.$row.'.'.$column]);
+    			}
+    	}
+    	  	 
+      	//for($row = 2; $row <= $info['cantPreguntas']; $row++){  		
+    	//	
+    	//	$column=1;
+    	//	
+    	//   	$this->see($info['crit'.$row], '//tr['.$row.']/td');
+    	//   		
+    	//   	$this->see($info['critinfo'.$row.'.'.$column], '//tr['.$row.']/td[2]/table/tbody/tr/td/div/div');
+    	//   	$this->see($info['critval'.$row.'.'.$column], '//tr['.$row.']/td[2]/table/tbody/tr/td/div/div[2]');
+    	//	
+    	//	for($column = 2; $column <= $info['quantLvls'.$row]; $column++){
+    	//		    			
+    	//		$this->see($info['critinfo'.$row.'.'.$column], '//tr['.$row.']/td[2]/table/tbody/tr/td['.$column.']/div/div');
+    	//		$this->see($info['critval'.$row.'.'.$column], '//tr['.$row.']/td[2]/table/tbody/tr/td['.$column.']/div/div[2]');
+    	//			    			
+    	//	}
+    	//}
+    	
+    	////////////////////////
     }
         
     public function publishRubric($rubricId, $name){
