@@ -1,6 +1,5 @@
 <?php
 require_once 'data.php';
-
 ?>
 
 <html lang="en">
@@ -14,32 +13,22 @@ require_once 'data.php';
 	<div>
 		<h1>Use cases Emarking Activity</h1>
 	</div>
-	<div>
+
 			<?php
 			$id = 1;
-			foreach ( $new_combos as $combo ) {
+			echo "TOTAL :" . count($new_combos);
+			echo "<br>";
+			foreach($new_combos as $combo){
 				echo $id . ";Activity #" . $id;
-				foreach ( $combo as $data ) {
+				foreach($combo as $data){
 					echo ";" . $data;
 				}
-				$id ++;
+				$id++;
 				echo "<br>";
 			}
-			
-			/**
-			 * echo '<pre>';
-			 * echo var_dump($new_combos);
-			 * echo '</pre>';
-			 */
-			
+			echo '<pre>';
+			echo var_dump($new_combos);
+			echo '</pre>';
 			?>	
-			
-		</table>
-	</div>
-	<footer>
-		<div>
-			<p></p>
-		</div>
-	</footer>
 </body>
 </html>

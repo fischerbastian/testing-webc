@@ -64,8 +64,8 @@ class AcceptanceTester extends \Codeception\Actor
     public function createEmarkingActivity($info){
     	
     	
-    	$this->see($info['curse']);    	
-    	$this->click($info['curse']);
+    	$this->see($info['course']);    	
+    	$this->click($info['course']);
     	
     	$courseid = $this->grabFromCurrentUrl('/id=(\d+)/');
     	
@@ -115,7 +115,7 @@ class AcceptanceTester extends \Codeception\Actor
     	
     	//Grade
     	$this->selectOption('grademin',$info['grademin']);
-    	$this->selectOption('grade',$info['grade']);
+    	$this->selectOption('grade',$info['grademax']);
     	
     	if($info['adjustslope']){
     		

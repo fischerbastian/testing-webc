@@ -1,6 +1,6 @@
-
 <?php
-ini_set ( 'memory_limit', '512M' );
+
+ini_set ('memory_limit', '170M');
 
 /**
  * Generate all the possible combinations among a set of nested arrays.
@@ -17,7 +17,7 @@ ini_set ( 'memory_limit', '512M' );
  *        	The key index (used internally).
  */
 function generate_combinations(array $data, array &$all = array(), array $group = array(), $value = null, $i = 0) {
-	$keys = array_keys ( $data );
+	$keys = array_keys ($data);
 	if (isset ( $value ) === true) {
 		array_push ( $group, $value );
 	}
@@ -38,34 +38,27 @@ function generate_combinations(array $data, array &$all = array(), array $group 
 $marking_type = array (
 		'Normal' 
 )
-// 'Entrenamiento correctores',
-// 'Entrenamiento estudiantes'
 ;
 
 // Marking
 $total_pages = array ();
-for($pages = 1; $pages <= 60; $pages ++) {
+for($pages = 1; $pages <= 2; $pages ++) {
 	$total_pages [$pages] = $pages;
 }
 
-$anonymous = array (
-		'Student anonymous / Marker visible',
-		'Student anonymous / Marker anonymous',
-		'Student visible / Marker visible',
-		'Student visible / Marker anónimo' 
-);
+/**
+ * 'Student anonymous / Marker visible' = 0
+ * 'Student anonymous / Marker anonymous' = 1
+ * 'Student visible / Marker visible' = 2
+ * 'Student visible / Marker anónimo' = 3
+ */
+$anonymous = array (0, 1, 2, 3);
 
-$custom_marks = array (
-		'empty' 
-)
+$custom_marks = array ('Empty');
 // 'Sp#Spelling error'
-;
 
 // Dates & Regrade
-$enable_due_date = array (
-		true,
-		false 
-);
+$enable_due_date = array (true, false);
 
 $restrict_regrading_date = array (
 		true,
@@ -89,7 +82,7 @@ $grade_category = array (
 $minimum_grade = array ();
 $maximum_grade = array ();
 
-for($grade = 0; $grade <= 10; $grade ++) {
+for($grade = 0; $grade <= 2; $grade ++) {
 	$minimum_grade [$grade] = $grade;
 	$maximum_grade [$grade] = $grade;
 }
@@ -99,33 +92,14 @@ $adjust_grade_slope = array (
 		false 
 );
 
-$header = array (
-		'#',
-		'Activity name',
-		'Marking type',
-		'Total pages',
-		'Marker type',
-		'Custom marks',
-		'Enable due date',
-		'Restrict regrading date',
-		'Students can view peers exams',
-		'Grading method',
-		'Grade category',
-		'Minimum grade',
-		'Maximum grade',
-		'Adjust grade slope' 
-);
-
 $info = array (
-		$marking_type,
+		//$marking_type,
 		$total_pages,
 		$anonymous,
-		$custom_marks,
+		//$custom_marks,
 		$enable_due_date,
 		$restrict_regrading_date,
 		$students_can_view_peers_exams,
-		$grading_method,
-		$grade_category,
 		$minimum_grade,
 		$maximum_grade,
 		$adjust_grade_slope 
@@ -137,7 +111,7 @@ $new_combos = array ();
 for($i = 0; $i < count ( $combos ); $i ++) {
 	for($j = 0; $j < count ( $combos [$i] ); $j ++) {
 		// If Minimum is greater than maximum grade, we take off that minimum grade from the array
-		if ($combos [$i] [10] > $combos [$i] [9]) {
+		if ($combos [$i] [6] > $combos [$i] [5]) {
 			$new_combos [$i] [$j] = $combos [$i] [$j];
 		}
 	}
