@@ -61,7 +61,7 @@ class AcceptanceTester extends \Codeception\Actor
     	$this->click('submitbutton');
     	
     }
-    public function createEmarkingActivity($info){
+	public function createEmarkingActivity($info){
     	
     	
     	$this->see($info['course']);    	
@@ -81,48 +81,83 @@ class AcceptanceTester extends \Codeception\Actor
     	// falta custom marks
     	
     	// Dates and Regrades
-    	if ($info['enableduedate']){
+    	if (!$info['enableduedate']){
     		
-    	$this->checkOption('#id_enableduedate');
+    		$info['markingduedateday'] = null;
+    		$info['markingduedatemonth'] = null;
+    		$info['markingduedateyear'] = null;
+    		$info['markingduedatehour'] = null;
+    		$info['markingduedateminute'] = null;
     	
-    	$this->selectOption('markingduedate[day]',$info['markingduedateday']);
-    	$this->selectOption('markingduedate[month]',$info['markingduedatemonth']);
-    	$this->selectOption('markingduedate[year]',$info['markingduedateyear']);
-    	$this->selectOption('markingduedate[hour]',$info['markingduedatehour']);
-    	$this->selectOption('markingduedate[minute]',$info['markingduedateminute']);
     	}
     	
-    	if ($info['regraderestrictdates']){
+    	else{
     		
-    	$this->checkOption('#id_regraderestrictdates');
+    		$this->checkOption('#id_enableduedate');
+    		 
+    		$this->selectOption('markingduedate[day]',$info['markingduedateday']);
+    		$this->selectOption('markingduedate[month]',$info['markingduedatemonth']);
+    		$this->selectOption('markingduedate[year]',$info['markingduedateyear']);
+    		$this->selectOption('markingduedate[hour]',$info['markingduedatehour']);
+    		$this->selectOption('markingduedate[minute]',$info['markingduedateminute']);
     	
-    	$this->selectOption('regradesopendate[day]',$info['regradesopendateday']);
-    	$this->selectOption('regradesopendate[month]',$info['regradesopendatemonth']);
-    	$this->selectOption('regradesopendate[year]',$info['regradesopendateyear']);
-    	$this->selectOption('regradesopendate[hour]',$info['regradesopendatehour']);
-    	$this->selectOption('regradesopendate[minute]',$info['regradesopendateminute']);
+    	}
     	
-    	$this->selectOption('regradesclosedate[day]',$info['regradesclosedateday']);
-    	$this->selectOption('regradesclosedate[month]',$info['regradesclosedatemonth']);
-    	$this->selectOption('regradesclosedate[year]',$info['regradesclosedateyear']);
-    	$this->selectOption('regradesclosedate[hour]',$info['regradesclosedatehour']);
-    	$this->selectOption('regradesclosedate[minute]',$info['regradesclosedateminute']);
+    	if (!$info['regraderestrictdates']){
+    		
+    		$info['regradesopendateday'] = null;
+    		$info['regradesopendatemonth'] = null;
+    		$info['regradesopendateyear'] = null;
+    		$info['regradesopendatehour'] = null;
+    		$info['regradesopendateminute'] = null;
+    		 
+    		$info['regradesclosedateday'] = null;
+    		$info['regradesclosedatemonth'] = null;
+    		$info['regradesclosedateyear'] = null;
+    		$info['regradesclosedatehour'] = null;
+    		$info['regradesclosedateminute'] = null;
+    		  	
+    	}
+    	
+    	else {
+    		
+    		$this->checkOption('#id_regraderestrictdates');
+    		 
+    		$this->selectOption('regradesopendate[day]',$info['regradesopendateday']);
+    		$this->selectOption('regradesopendate[month]',$info['regradesopendatemonth']);
+    		$this->selectOption('regradesopendate[year]',$info['regradesopendateyear']);
+    		$this->selectOption('regradesopendate[hour]',$info['regradesopendatehour']);
+    		$this->selectOption('regradesopendate[minute]',$info['regradesopendateminute']);
+    		 
+    		$this->selectOption('regradesclosedate[day]',$info['regradesclosedateday']);
+    		$this->selectOption('regradesclosedate[month]',$info['regradesclosedatemonth']);
+    		$this->selectOption('regradesclosedate[year]',$info['regradesclosedateyear']);
+    		$this->selectOption('regradesclosedate[hour]',$info['regradesclosedatehour']);
+    		$this->selectOption('regradesclosedate[minute]',$info['regradesclosedateminute']);
+    		
     	}
     	
     	
     	$this->selectOption('peervisibility',$info['peervisibility']);
     	
-    	
     	//Grade
     	$this->selectOption('grademin',$info['grademin']);
     	$this->selectOption('grade',$info['grademax']);
     	
-    	if($info['adjustslope']){
-    		
-    	$this->checkOption('adjustslope');
+    	if(!$info['adjustslope']){
     	
-    	$this->fillField('adjustslopegrade',$info['adjustslopegrade']);
-    	$this->fillField('adjustslopescore',$info['adjustslopescore']);
+    		$info['adjustslopegrade'] = null;
+    		$info['adjustslopescore'] = null;
+    	
+    	}
+    	
+    	else{
+    		
+    		$this->checkOption('adjustslope');
+    		 
+    		$this->fillField('adjustslopegrade',$info['adjustslopegrade']);
+    		$this->fillField('adjustslopescore',$info['adjustslopescore']);
+    		
     	}
     	
     	//Common module settings
@@ -135,10 +170,10 @@ class AcceptanceTester extends \Codeception\Actor
     	
     }
 
-    public function IdEmarkingActivity($curse, $activity){
+    public function IdEmarkingActivity($course, $activity){
     
-    	$this->see($curse);    	
-    	$this->click($curse);
+    	$this->see($course);    	
+    	$this->click($course);
     	
     	$this->see($activity);
     	$this->click($activity);
