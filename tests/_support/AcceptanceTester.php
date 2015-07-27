@@ -139,7 +139,7 @@ class AcceptanceTester extends \Codeception\Actor
     	
     	$this->selectOption('peervisibility',$info['peervisibility']);
     	
-    	//Grade
+    	// Grade
     	$this->selectOption('grademin',$info['grademin']);
     	$this->selectOption('grade',$info['grademax']);
     	
@@ -159,7 +159,7 @@ class AcceptanceTester extends \Codeception\Actor
     		
     	}
     	
-    	//Common module settings
+    	// Common module settings
     	$this->fillField('cmidnumber',$info['cmidnumber']);
     	$this->selectOption('groupmode',$info['groupmode']);
     	
@@ -193,8 +193,10 @@ class AcceptanceTester extends \Codeception\Actor
     	
     	$this->amOnPage('/grade/grading/manage.php?id='.$activityId.'&contextid='.$contextid.'&component='.$component.'&area='.$area.'&sesskey='.$sesskey);
 
-    	// Because we couldn't click the SRC about the picture associated,
-    	// we decided to use the xpath ubication
+    	/**
+    	 * Because we couldn't click the SRC about the picture associated,
+    	 * we decided to use the xpath ubication
+    	 */
     	
     	$this->click('//section[@id="region-main"]/div/div[2]/a');
     	$rubricId = $this->grabFromCurrentUrl('/areaid=(\d+)/');
@@ -202,7 +204,7 @@ class AcceptanceTester extends \Codeception\Actor
     	
     }
     
-    public function autofillRubric($info){
+    public function autofillRubric(array $info){
     	
     	$this->fillField('name', $info['name']);
 		
@@ -210,7 +212,7 @@ class AcceptanceTester extends \Codeception\Actor
     	$quantityLevelsBefore = 0;
 		$criterianLevelNumber = 0;
 		
-		// count of numbers of levels on criterion X
+		// Count of numbers of levels on criterion X
     	$countCriterionLevels = 0;
     	
     	
@@ -242,10 +244,12 @@ class AcceptanceTester extends \Codeception\Actor
     		
     		for($criterianLevelNumber = 1; $criterianLevelNumber <= $info['quantLvls'.$criterianNumber]; $criterianLevelNumber++){
     			
-    			$quantityLevelsBefore = $criterianNumber-1;
+    			$quantityLevelsBefore = $criterianNumber - 1;
     			
-    			// we had plused 1 at $countCriterionLevels because the difference between
-    			// the start numbers of $countCriterionLevels (0) and $info['quantLvls'.$quantityLevelsBefore] (1)
+    			/**
+    			 * We had plused 1 at $countCriterionLevels because the difference between
+    			 * the start numbers of $countCriterionLevels (0) and $info['quantLvls'.$quantityLevelsBefore] (1)
+    			 */
     			
     			if($countCriterionLevels + 1 > $info['quantLvls'.$quantityLevelsBefore]){
     				
@@ -331,8 +335,10 @@ class AcceptanceTester extends \Codeception\Actor
     	 
     	$this->amOnPage('/grade/grading/manage.php?areaid='.$rubricId);
     	 
-    	// Because we couldn't click the SRC about the picture associated,
-    	// we decided to use the xpath ubication
+    	/**
+    	 * Because we couldn't click the SRC about the picture associated,
+    	 * we decided to use the xpath ubication
+    	 */
       	
     	$this->click('//section[@id="region-main"]/div/div[2]/a[3]'); 
     	 
@@ -349,9 +355,11 @@ class AcceptanceTester extends \Codeception\Actor
     	
     	$this->see($name);
     	
-    	// We used the pick=4 because we couldn't grab the corresponding pick from 
-    	// some X rubric, so we call a standar published rubric that have the value 4 on pick
-    	
+    	/**
+    	 * We used the pick=4 because we couldn't grab the corresponding pick from 
+    	 * some X rubric, so we call a standar published rubric that have the value 4 on pick
+    	 */
+
     	$this->amOnPage('/grade/grading/pick.php?targetid='.$rubricId.'&pick=4');
     	
     	$this->see($name);

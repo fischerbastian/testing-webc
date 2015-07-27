@@ -17,33 +17,37 @@ ini_set ('memory_limit', '170M');
  *        	The key index (used internally).
  */
 function generate_combinations(array $data, array &$all = array(), array $group = array(), $value = null, $i = 0) {
+	
 	$keys = array_keys ($data);
+	
 	if (isset ( $value ) === true) {
+		
 		array_push ( $group, $value );
 	}
+	
 	if ($i >= count ( $data )) {
+
 		array_push ( $all, $group );
-	} else {
-		$currentKey = $keys [$i];
+	}
+	 else {
+
+	 	$currentKey = $keys [$i];
 		$currentElement = $data [$currentKey];
 		foreach ( $currentElement as $val ) {
 			generate_combinations ( $data, $all, $group, $val, $i + 1 );
 		}
 	}
+	
 	return $all;
 }
 
 // General
-
-$marking_type = array (
-		'Normal' 
-)
-;
+$marking_type = array('Normal');
 
 // Marking
-$total_pages = array ();
+$total_pages = array();
 for($pages = 1; $pages <= 2; $pages ++) {
-	$total_pages [$pages] = $pages;
+	$total_pages[$pages] = $pages;
 }
 
 /**
@@ -60,24 +64,14 @@ $custom_marks = array ('Empty');
 // Dates & Regrade
 $enable_due_date = array (true, false);
 
-$restrict_regrading_date = array (
-		true,
-		false 
-);
+$restrict_regrading_date = array (true, false);
 
-$students_can_view_peers_exams = array (
-		true,
-		false 
-);
+$students_can_view_peers_exams = array (true, false);
 
 // Grade
-$grading_method = array (
-		'Rubric' 
-);
+$grading_method = array ('Rubric');
 
-$grade_category = array (
-		'Uncategorised' 
-);
+$grade_category = array ('Uncategorised');
 
 $minimum_grade = array ();
 $maximum_grade = array ();
@@ -87,10 +81,7 @@ for($grade = 0; $grade <= 2; $grade ++) {
 	$maximum_grade [$grade] = $grade;
 }
 
-$adjust_grade_slope = array (
-		true,
-		false 
-);
+$adjust_grade_slope = array(true, false);
 
 $info = array (
 		//$marking_type,
@@ -105,14 +96,17 @@ $info = array (
 		$adjust_grade_slope 
 );
 
-$combos = generate_combinations ( $info );
+$combos = generate_combinations ($info);
 
-$new_combos = array ();
+$new_combos = array();
+
 for($i = 0; $i < count ( $combos ); $i ++) {
 	for($j = 0; $j < count ( $combos [$i] ); $j ++) {
+		
 		// If Minimum is greater than maximum grade, we take off that minimum grade from the array
-		if ($combos [$i] [6] > $combos [$i] [5]) {
-			$new_combos [$i] [$j] = $combos [$i] [$j];
+		if ($combos[$i][6] > $combos[$i][5]) {
+			$new_combos[$i][$j] = $combos[$i][$j];
+			
 		}
 	}
 }

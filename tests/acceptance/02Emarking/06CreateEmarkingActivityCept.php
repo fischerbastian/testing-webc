@@ -5,7 +5,7 @@ ini_set ('memory_limit', '170M');
 
 $I = new AcceptanceTester ($scenario);
 
-$I->wantTo('Create a Rubirc for a Emarking activity');
+$I->wantTo('Create' .count($new_combos) .'Emarking activities');
 
 $I->login('admin', 'pepito.P0', 'Admin User');
 $I->amOnPage('/');
@@ -18,7 +18,7 @@ foreach($new_combos as $combo){
 			'totalpages' => $combo[0],
 			'anonymous' => $combo[1],
 			'enableduedate' => $combo[2],
-			'markingduedateday' => 1,
+			//'markingduedateday' => 1,
 			'markingduedatemonth' => 1,
 			'markingduedateyear' => 2016,
 			'markingduedatehour' => 1,
