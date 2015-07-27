@@ -137,7 +137,6 @@ class AcceptanceTester extends \Codeception\Actor
     		
     	}
     	
-    	
     	$this->selectOption('peervisibility',$info['peervisibility']);
     	
     	//Grade
@@ -196,6 +195,7 @@ class AcceptanceTester extends \Codeception\Actor
 
     	// Because we couldn't click the SRC about the picture associated,
     	// we decided to use the xpath ubication
+    	
     	$this->click('//section[@id="region-main"]/div/div[2]/a');
     	$rubricId = $this->grabFromCurrentUrl('/areaid=(\d+)/');
     	return $rubricId;
@@ -246,28 +246,35 @@ class AcceptanceTester extends \Codeception\Actor
     			
     			// we had plused 1 at $countCriterionLevels because the difference between
     			// the start numbers of $countCriterionLevels (0) and $info['quantLvls'.$quantityLevelsBefore] (1)
+    			
     			if($countCriterionLevels + 1 > $info['quantLvls'.$quantityLevelsBefore]){
+    				
     				$this->click('rubric[criteria][NEWID'.$criterianNumber.'][levels][addlevel]');
-    			}
+    			
+    				}
     			
     			    $this->fillField('rubric[criteria][NEWID'.$criterianNumber.'][levels][NEWID'.$countCriterionLevels.'][definition]', $info['critinfo'.$criterianNumber.'.'.$criterianLevelNumber]);
     				$this->fillField('rubric[criteria][NEWID'.$criterianNumber.'][levels][NEWID'.$countCriterionLevels.'][score]', $info['critval'.$criterianNumber.'.'.$criterianLevelNumber]);
     			
     			$countCriterionLevels++;
+    			}
     		}
-    	}
     	}
     	
     	if ($info['draft']){
-    	$this->click('saverubricdraft');
+    	
+    		$this->click('saverubricdraft');
+    	
     	}
+    	
     	else{
-    	$this->click('saverubric');	
+    	
+    		$this->click('saverubric');	
+    	
     	}
     	
     	$this->see($info['name']);
     	
-    	///////////////////////////
     	
     	$row=1;
     	$column=1;
@@ -289,35 +296,35 @@ class AcceptanceTester extends \Codeception\Actor
     			$column=1;
     		
     		   	$this->see($info['crit'.$row]);
-    		
-    		  	$this->see($info['critinfo'.$row.'.'.$column]);
+    			$this->see($info['critinfo'.$row.'.'.$column]);
     		   	$this->see($info['critval'.$row.'.'.$column]);
     		
     			for($column = 2; $column <= $info['quantLvls'.$row]; $column++){
     		
     				$this->see($info['critinfo'.$row.'.'.$column]);
     				$this->see($info['critval'.$row.'.'.$column]);
+    			
     			}
     	}
-    	  	 
-      	//for($row = 2; $row <= $info['cantPreguntas']; $row++){  		
-    	//	
-    	//	$column=1;
-    	//	
-    	//   	$this->see($info['crit'.$row], '//tr['.$row.']/td');
-    	//   		
-    	//   	$this->see($info['critinfo'.$row.'.'.$column], '//tr['.$row.']/td[2]/table/tbody/tr/td/div/div');
-    	//   	$this->see($info['critval'.$row.'.'.$column], '//tr['.$row.']/td[2]/table/tbody/tr/td/div/div[2]');
-    	//	
-    	//	for($column = 2; $column <= $info['quantLvls'.$row]; $column++){
-    	//		    			
-    	//		$this->see($info['critinfo'.$row.'.'.$column], '//tr['.$row.']/td[2]/table/tbody/tr/td['.$column.']/div/div');
-    	//		$this->see($info['critval'.$row.'.'.$column], '//tr['.$row.']/td[2]/table/tbody/tr/td['.$column.']/div/div[2]');
-    	//			    			
-    	//	}
-    	//}
     	
-    	////////////////////////
+    	/** 
+      	 *for($row = 2; $row <= $info['cantPreguntas']; $row++){  		
+    	 *	
+    	 *	$column=1;
+    	 *	
+    	 *   	$this->see($info['crit'.$row], '//tr['.$row.']/td');
+    	 *   		
+    	 *   	$this->see($info['critinfo'.$row.'.'.$column], '//tr['.$row.']/td[2]/table/tbody/tr/td/div/div');
+    	 *   	$this->see($info['critval'.$row.'.'.$column], '//tr['.$row.']/td[2]/table/tbody/tr/td/div/div[2]');
+    	 *	
+    	 *	for($column = 2; $column <= $info['quantLvls'.$row]; $column++){
+    	 *		    			
+    	 *		$this->see($info['critinfo'.$row.'.'.$column], '//tr['.$row.']/td[2]/table/tbody/tr/td['.$column.']/div/div');
+    	 *		$this->see($info['critval'.$row.'.'.$column], '//tr['.$row.']/td[2]/table/tbody/tr/td['.$column.']/div/div[2]');
+    	 *			    			
+    	 *	}
+    	 *}
+    	 */
     }
         
     public function publishRubric($rubricId, $name){
@@ -326,7 +333,8 @@ class AcceptanceTester extends \Codeception\Actor
     	 
     	// Because we couldn't click the SRC about the picture associated,
     	// we decided to use the xpath ubication
-      	$this->click('//section[@id="region-main"]/div/div[2]/a[3]'); 
+      	
+    	$this->click('//section[@id="region-main"]/div/div[2]/a[3]'); 
     	 
     	$this->see($name);
     	 
@@ -343,6 +351,7 @@ class AcceptanceTester extends \Codeception\Actor
     	
     	// We used the pick=4 because we couldn't grab the corresponding pick from 
     	// some X rubric, so we call a standar published rubric that have the value 4 on pick
+    	
     	$this->amOnPage('/grade/grading/pick.php?targetid='.$rubricId.'&pick=4');
     	
     	$this->see($name);
