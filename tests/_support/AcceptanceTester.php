@@ -369,5 +369,18 @@ class AcceptanceTester extends \Codeception\Actor
     	
     }
     
+    public function grabStudentId(){
+    	
+    	$this->amOnPage('/');
+    	
+    	$this->click('Mi perfil');
+
+    	$this->click('Ver perfil');
+
+    	$studentId = $this->grabFromCurrentUrl('/id=(\d+)/');
+    	
+    	return $studentId;
+    }
+    
 }
 
