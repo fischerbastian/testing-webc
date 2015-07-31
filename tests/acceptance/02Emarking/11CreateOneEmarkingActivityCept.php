@@ -2,7 +2,7 @@
 
 $I = new AcceptanceTester ($scenario);
 
-$I->wantTo('Create a standar Emarking activities');
+$I->wantTo('Create a standart Emarking activities');
 
 $I->login('admin', 'pepito.P0', 'Admin User');
 $I->amOnPage('/');

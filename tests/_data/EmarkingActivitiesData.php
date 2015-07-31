@@ -2,39 +2,40 @@
 
 ini_set ('memory_limit', '170M');
 
-/**
- * Generate all the possible combinations among a set of nested arrays.
- *
- * @param array $data
- *        	The entrypoint array container.
- * @param array $all
- *        	The final container (used internally).
- * @param array $group
- *        	The sub container (used internally).
- * @param mixed $val
- *        	The value to append (used internally).
- * @param int $i
- *        	The key index (used internally).
- */
 function generate_combinations(array $data, array &$all = array(), array $group = array(), $value = null, $i = 0) {
+	
+	/**
+	 * Generate all the possible combinations among a set of nested arrays.
+	 *
+	 * @param array $data
+	 *        	The entrypoint array container.
+	 * @param array $all
+	 *        	The final container (used internally).
+	 * @param array $group
+	 *        	The sub container (used internally).
+	 * @param mixed $val
+	 *        	The value to append (used internally).
+	 * @param int $i
+	 *        	The key index (used internally).
+	 */
 	
 	$keys = array_keys ($data);
 	
-	if (isset ( $value ) === true) {
+	if (isset ($value) === true) {
 		
-		array_push ( $group, $value );
+		array_push ($group, $value);
 	}
 	
-	if ($i >= count ( $data )) {
+	if ($i >= count ($data)) {
 
-		array_push ( $all, $group );
+		array_push($all, $group);
 	}
 	 else {
 
-	 	$currentKey = $keys [$i];
-		$currentElement = $data [$currentKey];
-		foreach ( $currentElement as $val ) {
-			generate_combinations ( $data, $all, $group, $val, $i + 1 );
+	 	$currentKey = $keys[$i];
+		$currentElement = $data[$currentKey];
+		foreach ($currentElement as $val) {
+			generate_combinations($data, $all, $group, $val, $i++);
 		}
 	}
 	
@@ -46,7 +47,7 @@ $marking_type = array('Normal');
 
 // Marking
 $total_pages = array();
-for($pages = 1; $pages <= 2; $pages ++) {
+for($pages = 1; $pages <= 2; $pages++) {
 	$total_pages[$pages] = $pages;
 }
 
@@ -76,7 +77,7 @@ $grade_category = array ('Uncategorised');
 $minimum_grade = array ();
 $maximum_grade = array ();
 
-for($grade = 0; $grade <= 2; $grade ++) {
+for($grade = 0; $grade <= 2; $grade++) {
 	$minimum_grade [$grade] = $grade;
 	$maximum_grade [$grade] = $grade;
 }
@@ -100,13 +101,12 @@ $combos = generate_combinations ($info);
 
 $new_combos = array();
 
-for($i = 0; $i < count ( $combos ); $i ++) {
-	for($j = 0; $j < count ( $combos [$i] ); $j ++) {
+for($i = 0; $i < count($combos); $i++) {
+	for($j = 0; $j < count($combos[$i]); $j++) {
 		
 		// If Minimum is greater than maximum grade, we take off that minimum grade from the array
 		if ($combos[$i][6] > $combos[$i][5]) {
 			$new_combos[$i][$j] = $combos[$i][$j];
-			
 		}
 	}
 }
