@@ -8,5 +8,5 @@ class_name: AcceptanceTester
 modules:
     enabled:
         - PhpBrowser:
-            url: http://localhost:8080/moodle-2.9.2
+            url: http://localhost:8080/moodle-3.0.0
         - \Helper\Acceptance
